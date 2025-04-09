@@ -26,7 +26,6 @@ public class JSONReader extends Reader {
 
 	@Override
 	public HashMap read() throws IOException {
-		HashMap<Integer, Area> ret = new HashMap<Integer, Area>();
 		Pattern pattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}", Pattern.CASE_INSENSITIVE);
 		
 		try (FileReader file = new FileReader(this.filename)) {
@@ -34,15 +33,15 @@ public class JSONReader extends Reader {
 			JSONArray array = (JSONArray) obj;
 			for (int i = 0; i < array.size(); i++) {
 				JSONObject line = (JSONObject) array.get(i);
-				Integer zip = (Integer) line.get("zip_code");
+				Integer zip = Integer.valueOf((String) line.get("zip_code"));
 				String dateString = (String) line.get("etl_timestamp");
 				Matcher matcher = pattern.matcher(dateString);
 				if (zip==null || dateString==null || !matcher.find()) {
 					continue;
 				}
 				String date = matcher.group();
-				Integer partialVaccinations = (Integer) line.getOrDefault("partially_vaccinated", 0);
-				Integer fullVaccinations = (Integer) line.getOrDefault("fully_vaccinated", 0);
+				Integer partialVaccinations = Integer.valueOf((String) line.getOrDefault("partially_vaccinated", 0));
+				Integer fullVaccinations = Integer.valueOf((String) line.getOrDefault("fully_vaccinated", 0));
 				ret.putIfAbsent(zip, new Area(zip));
 				ret.get(zip).addPartialVaccination(date, partialVaccinations);
 				ret.get(zip).addFullVaccination(date, fullVaccinations);

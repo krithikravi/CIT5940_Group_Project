@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Area {
-<<<<<<< HEAD
 	protected Integer zipcode;
 	protected Integer population;
 	protected HashMap<String, Integer> partialVaccinations;
@@ -36,6 +35,10 @@ public class Area {
 	public Integer getZipcode() {
 		return zipcode;
 	}
+	
+	public void setPopulation(Integer value) {
+		population=value;
+	}
 
 	public Integer getPopulation() {
 		return population;
@@ -62,10 +65,4 @@ public class Area {
 	}
 	
 	
-=======
-	String zipcode;
-	Integer population;
-	protected HashMap<String, Integer> vaccinations;
-	protected ArrayList<Property> properties;
->>>>>>> 9b3159aea1cdbb1c19a12e85603ec35d88c62f8d
 }

@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 public abstract class Reader {
     protected String filename;
+    protected HashMap ret;
     
     public Reader(String filename) {
     	if (filename == null || filename.trim().isEmpty()) {
