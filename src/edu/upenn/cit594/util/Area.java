@@ -15,7 +15,7 @@ public class Area {
 		this.population=0;
 		this.partialVaccinations=new HashMap<String,Integer>();
 		this.fullVaccinations= new HashMap<String, Integer>();
-		
+		this.properties=new ArrayList<Property>();
 		
 		
 	}
@@ -30,6 +30,7 @@ public class Area {
 		this.properties.add(property);
 		this.totalMarketValue+=property.getMarketValue();
 		this.totalLivableArea+=property.getLivableArea();
+//		System.out.println(this.properties);
 	}
 
 	public Integer getZipcode() {

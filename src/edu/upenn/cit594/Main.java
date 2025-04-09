@@ -9,7 +9,7 @@ import java.util.TreeMap;
 
 import edu.upenn.cit594.datamanagement.*;
 //import edu.upenn.cit594.processor.*;
-//import edu.upenn.cit594.ui.*;
+import edu.upenn.cit594.ui.*;
 import edu.upenn.cit594.util.*;
 
 public class Main {
@@ -20,8 +20,10 @@ public class Main {
 			HashMap ret = new HashMap<Integer, Area>();
 			Reader reader = Reader.getReader(args[0], ret);;
 			HashMap<Integer,Area> covid = reader.read();
-//			System.out.println(covid.keySet());
+			System.out.println(covid.keySet());
 //			System.out.println(covid.get(19102).getFullVaccinations().values());
+//			System.out.println(covid.get(19153).getPopulation());
+			System.out.println(covid.get(19143).getProperties().getFirst().getMarketValue());
 //			if (args.length != 3) {
 //				throw new IllegalArgumentException("Required: tweets_file states_file log_file");
 //			}
@@ -68,11 +70,8 @@ public class Main {
 		} catch (Exception e) {
 			System.err.println("Unexpected error: " + e.getMessage());
 		}
-=======
-		// TODO Auto-generated method stub
-		UserInterface.printMenu();
+//		UserInterface.printMenu();
 
->>>>>>> f25fe0c812a0318a78b51640e3fde708417f6125
 	}
 
 }
