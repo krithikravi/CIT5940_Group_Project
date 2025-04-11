@@ -10,6 +10,33 @@ public class UserInterface {
 	public void runProgram() {
 		while((input=scanner.nextInt())!=0) {
 			this.menuContent();
+			System.out.println("> ");
+			System.out.flush();
+			switch(input) {
+			case 0: 
+				return;
+//				break;
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			case 6:
+				break;
+			case 7:
+				break;
+			default:
+				System.err.println("Invalid input. Please try again");
+				continue;
+				
+
+
+			}
 		}
 	}
 

@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.regex.Pattern;
 
@@ -17,6 +19,8 @@ public class Main {
 
 	public static void main(String[] args) {
 
+		Set<String> argsTraversed = new HashSet<String>();
+		LoggerAccessor loggerAccessor;
 		try {
 			HashMap ret = new HashMap<Integer, Area>();
 			Reader reader = Reader.getReader(args[0], ret);;
@@ -25,39 +29,69 @@ public class Main {
 //			System.out.println(covid.get(19102).getFullVaccinations().values());
 //			System.out.println(covid.get(19153).getPopulation());
 			System.out.println(covid.get(19143).getProperties().getFirst().getMarketValue());
-			if (args.length != 3) {
+			if (args.length == 0 || args.length>4) {
 				throw new IllegalArgumentException("Required: tweets_file states_file log_file");
 			}
 			
 //			Check that all arguments are properly formatted
 			for (int i = 0; i<args.length; i++) {
+				argsTraversed.clear(); //= new HashSet<String>(); 
 				String regex = "^--(?<name>.+?)=(?<value>.+)$";
 			    Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
 			    if (!pattern.matcher(args[i]).find()) {
 			    	throw new IllegalArgumentException("Required argument format: --population=pop.csv"
 			    			+ "--covid=cov.csv --properties=props.csv --log=log.txt");
 			    }
+			    
+			    if (args[i].startsWith("--population=")) {
+			    	if (!argsTraversed.add("--population=")) {
+			    		throw new IllegalArgumentException("More than one argument for population file");
+			    		
+			    	}
+			    	
+			    }
+			    if (args[i].startsWith("--covid=")) {
+			    	if (!argsTraversed.add("--covid=")) {
+			    		throw new IllegalArgumentException("More than one argument for covid file");
+			    		
+			    	}
+			    	
+			    }
+			    if (args[i].startsWith("--properties=")) {
+			    	if (!argsTraversed.add("--properties=")) {
+			    		throw new IllegalArgumentException("More than one argument for properties file");
+			    		
+			    	}
+			    	
+			    }
+			    if (args[i].startsWith("--log=")) {
+			    	if (!argsTraversed.add("--log=")) {
+			    		throw new IllegalArgumentException("More than one argument for log file");
+			    		
+			    	}
+			    	 loggerAccessor = new LoggerAccessor(args[i]);
+			    	
+			    }
 			}
 			
-			if (!args[0].startsWith("--population=")) {
-				throw new IllegalArgumentException("Required argument format: --population=pop.csv"
-			    			+ "--covid=cov.csv --properties=props.csv --log=log.txt");
-			}
-			if (!args[1].startsWith("--covid=")) {
-				throw new IllegalArgumentException("Required argument format: --population=pop.csv"
-			    			+ "--covid=cov.csv --properties=props.csv --log=log.txt");
-			}
-			if (!args[2].startsWith("--properties=")) {
-				throw new IllegalArgumentException("Required argument format: --population=pop.csv"
-			    			+ "--covid=cov.csv --properties=props.csv --log=log.txt");
-			}
-			if (!args[3].startsWith("--log=")) {
-				throw new IllegalArgumentException("Required argument format: --population=pop.csv"
-			    			+ "--covid=cov.csv --properties=props.csv --log=log.txt");
-			}
+//			if (!args[0].startsWith("--population=")) {
+//				throw new IllegalArgumentException("Required argument format: --population=pop.csv"
+//			    			+ "--covid=cov.csv --properties=props.csv --log=log.txt");
+//			}
+//			if (!args[1].startsWith("--covid=")) {
+//				throw new IllegalArgumentException("Required argument format: --population=pop.csv"
+//			    			+ "--covid=cov.csv --properties=props.csv --log=log.txt");
+//			}
+//			if (!args[2].startsWith("--properties=")) {
+//				throw new IllegalArgumentException("Required argument format: --population=pop.csv"
+//			    			+ "--covid=cov.csv --properties=props.csv --log=log.txt");
+//			}
+//			if (!args[3].startsWith("--log=")) {
+//				throw new IllegalArgumentException("Required argument format: --population=pop.csv"
+//			    			+ "--covid=cov.csv --properties=props.csv --log=log.txt");
+//			}
 			
 			
-			LoggerAccessor loggerAccessor = new LoggerAccessor(args[3]);
 			
 			/* Need to check this
 			The format of the COVID data file can not be determined from the filename extension (“csv”
