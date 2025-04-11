@@ -66,6 +66,9 @@ public class Main {
 				throw new IllegalArgumentException("covid file has incorrect extension");
 			}
 			
+			UserInterface ui = new UserInterface();
+			ui.runProgram();
+			
 //			if ((!args[0].toLowerCase().endsWith(".txt") && !args[0].toLowerCase().endsWith(".json")) || !args[1].toLowerCase().endsWith(".csv")) {
 //				throw new IllegalArgumentException("Incorrect file extension.");
 //			}

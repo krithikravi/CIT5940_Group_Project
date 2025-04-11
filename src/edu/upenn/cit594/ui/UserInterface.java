@@ -1,7 +1,19 @@
 package edu.upenn.cit594.ui;
+
+import java.util.Scanner;
+
 public class UserInterface {
 	
-	public static void printMenu() {
+	int input;
+	Scanner scanner = new Scanner(System.in);
+	
+	public void runProgram() {
+		while((input=scanner.nextInt())!=0) {
+			this.menuContent();
+		}
+	}
+
+	public void menuContent() {
 		System.out.println("0. Exit the program.");
 		System.out.println("1. Show the available actions.");
 		System.out.println("2. Show the total population for all ZIP Codes.");
