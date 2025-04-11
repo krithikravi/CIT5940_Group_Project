@@ -38,7 +38,34 @@ public class Main {
 			    			+ "--covid=cov.csv --properties=props.csv --log=log.txt");
 			    }
 			}
-//			
+			
+			if (!args[0].startsWith("--population=")) {
+				throw new IllegalArgumentException("Required argument format: --population=pop.csv"
+			    			+ "--covid=cov.csv --properties=props.csv --log=log.txt");
+			}
+			if (!args[1].startsWith("--covid=")) {
+				throw new IllegalArgumentException("Required argument format: --population=pop.csv"
+			    			+ "--covid=cov.csv --properties=props.csv --log=log.txt");
+			}
+			if (!args[2].startsWith("--properties=")) {
+				throw new IllegalArgumentException("Required argument format: --population=pop.csv"
+			    			+ "--covid=cov.csv --properties=props.csv --log=log.txt");
+			}
+			if (!args[3].startsWith("--log=")) {
+				throw new IllegalArgumentException("Required argument format: --population=pop.csv"
+			    			+ "--covid=cov.csv --properties=props.csv --log=log.txt");
+			}
+			
+			
+			LoggerAccessor loggerAccessor = new LoggerAccessor(args[3]);
+			
+			/* Need to check this
+			The format of the COVID data file can not be determined from the filename extension (“csv”
+			or “json”, case-insensitive). */
+			if (!(args[2].toLowerCase().endsWith(".csv") || args[2].toLowerCase().endsWith(".json"))) {
+				throw new IllegalArgumentException("covid file has incorrect extension");
+			}
+			
 //			if ((!args[0].toLowerCase().endsWith(".txt") && !args[0].toLowerCase().endsWith(".json")) || !args[1].toLowerCase().endsWith(".csv")) {
 //				throw new IllegalArgumentException("Incorrect file extension.");
 //			}
