@@ -101,7 +101,7 @@ public class Main {
 			}
 			
 			UserInterface ui = new UserInterface();
-			ui.runProgram();
+			ui.runProgram(args);
 			
 //			if ((!args[0].toLowerCase().endsWith(".txt") && !args[0].toLowerCase().endsWith(".json")) || !args[1].toLowerCase().endsWith(".csv")) {
 //				throw new IllegalArgumentException("Incorrect file extension.");

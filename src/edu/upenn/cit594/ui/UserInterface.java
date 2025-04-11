@@ -1,13 +1,21 @@
 package edu.upenn.cit594.ui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.Scanner;
+
+import edu.upenn.cit594.datamanagement.CSVReader;
+import edu.upenn.cit594.datamanagement.Reader;
+import edu.upenn.cit594.processor.AllZipCodes;
 
 public class UserInterface {
 	
 	int input;
 	Scanner scanner = new Scanner(System.in);
+	String[] fileName = new String[2];
 	
-	public void runProgram() {
+	public void runProgram(String[] args) {
 		while((input=scanner.nextInt())!=0) {
 			this.menuContent();
 			System.out.println("> ");
@@ -19,6 +27,21 @@ public class UserInterface {
 			case 1:
 				break;
 			case 2:
+				for (int i = 0; i<args.length; i++) {
+					if (args[i].startsWith("--population=")) {
+						fileName = args[i].split("=");
+//						and then here send data to processing where you would get the total population
+						try {
+//							See how to use util package classes and functions
+							Reader reader = Reader.getReader(fileName[1], new HashMap<>());
+							AllZipCodes allZipCodes = new AllZipCodes(reader.read());
+							allZipCodes.totalPopulation();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
 				break;
 			case 3:
 				break;
