@@ -18,6 +18,7 @@ public class CSVReader extends Reader {
 	enum isEscaped {ESCAPED,NOT_ESCAPED};
 	enum prevQuote {QUOTE,NOT_QUOTE};
 	enum prevCR {CR,NOT_CR};
+	enum fileType {VAC,POP,PROP};
 
 	public CSVReader(String filename) throws FileNotFoundException {
 		super(filename);
@@ -41,6 +42,7 @@ public class CSVReader extends Reader {
 		int marketIndex = 0;
 		Pattern pattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}", Pattern.CASE_INSENSITIVE);
 		Pattern pattern2 = Pattern.compile("^\\d{5}");
+		fileType type = fileType.VAC;
 		while (true) {
 			String[] row = readRow();
 //			System.out.println(row[0]);
@@ -50,22 +52,30 @@ public class CSVReader extends Reader {
 			try {
 			if (zipIndex==-1) {
 				columns =Arrays.asList(row);
+				if (!columns.contains("zip_code")) {
+					throw new IOException("Invalid file: No zip_code field.");
+				}
 				zipIndex = columns.indexOf("zip_code");
-				if (columns.size()==9) {
+				if (columns.contains("etl_timestamp") && columns.contains("partially_vaccinated") && columns.contains("fully_vaccinated")) {
 					dateIndex=columns.indexOf("etl_timestamp");
 					partialIndex=columns.indexOf("partially_vaccinated");
 					fullIndex=columns.indexOf("fully_vaccinated");
 				}
-				if (columns.size()==3) {
+				else if (columns.contains("total_livable_area") && columns.contains("market_value")) {
+					type=fileType.PROP;
 					areaIndex=columns.indexOf("total_livable_area");
 					marketIndex = columns.indexOf("market_value");
 				}
-				if (columns.size()==2) {
+				else if (columns.contains("population")) {
+					type=fileType.POP;
 					popIndex = columns.indexOf("population");
+				}
+				else {
+					throw new IOException("Invalid file");
 				}
 				continue;
 			}
-			if (columns.size()==9) {
+			if (type.equals(fileType.VAC)) {
 				if (row[zipIndex]=="" || row[dateIndex]=="") {
 					continue;
 				}
@@ -82,7 +92,7 @@ public class CSVReader extends Reader {
 				ret.get(zip).addPartialVaccination(date, partialVaccinations);
 				ret.get(zip).addFullVaccination(date, fullVaccinations);
 			}
-			if (columns.size()==3) {
+			if (type.equals(fileType.PROP)) {
 				Matcher matcher2 = pattern2.matcher(row[zipIndex].toString());
 				if (!matcher2.find()) {
 					continue;
@@ -96,7 +106,7 @@ public class CSVReader extends Reader {
 				ret.get(zip).addProperty(new Property(marketValue,totalArea));
 //				System.out.println(ret.get(zip).getProperties());
 			}
-			if (columns.size()==2) {
+			if (type.equals(fileType.POP)) {
 				Matcher matcher2 = pattern2.matcher(row[zipIndex].toString());
 				if (!matcher2.find()) {
 					continue;
