@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
+import java.util.regex.Pattern;
 
 import edu.upenn.cit594.datamanagement.*;
 //import edu.upenn.cit594.processor.*;
@@ -24,9 +25,19 @@ public class Main {
 //			System.out.println(covid.get(19102).getFullVaccinations().values());
 //			System.out.println(covid.get(19153).getPopulation());
 			System.out.println(covid.get(19143).getProperties().getFirst().getMarketValue());
-//			if (args.length != 3) {
-//				throw new IllegalArgumentException("Required: tweets_file states_file log_file");
-//			}
+			if (args.length != 3) {
+				throw new IllegalArgumentException("Required: tweets_file states_file log_file");
+			}
+			
+//			Check that all arguments are properly formatted
+			for (int i = 0; i<args.length; i++) {
+				String regex = "^--(?<name>.+?)=(?<value>.+)$";
+			    Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+			    if (!pattern.matcher(args[i]).find()) {
+			    	throw new IllegalArgumentException("Required argument format: --population=pop.csv"
+			    			+ "--covid=cov.csv --properties=props.csv --log=log.txt");
+			    }
+			}
 //			
 //			if ((!args[0].toLowerCase().endsWith(".txt") && !args[0].toLowerCase().endsWith(".json")) || !args[1].toLowerCase().endsWith(".csv")) {
 //				throw new IllegalArgumentException("Incorrect file extension.");
