@@ -26,6 +26,7 @@ public class Main {
 			Reader reader = Reader.getReader(args[0].split("=")[1], ret);;
 			HashMap<Integer,Area> covid = reader.read();
 			System.out.println(covid.keySet());
+			System.out.println();
 //			System.out.println(covid.get(19102).getFullVaccinations().values());
 //			System.out.println(covid.get(19153).getPopulation());
 //			System.out.println(covid.get(19104).getProperties().getFirst().getLivableArea());

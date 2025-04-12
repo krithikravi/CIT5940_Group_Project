@@ -19,7 +19,8 @@ public class UserInterface {
 	public void runProgram(String[] args) {
 		while(input!=0) {
 			this.menuContent();
-			System.out.println("> ");
+			System.out.println();
+			System.out.print("> ");
 			System.out.flush();
 			input=scanner.nextInt();
 			switch(input) {
@@ -49,26 +50,29 @@ public class UserInterface {
 				System.out.println("Please enter either \"partial\" or \"full\" >");
 				String input3 = scanner.next();
 				while (!(input3.equals("partial") || input3.equals("full"))){
-					System.out.print("Please enter a valid option: partial or full>");
+					System.out.print("Please enter a valid option: partial or full > ");
 					input3 = scanner.next();
  
 				}
-				System.out.print("Please enter a date in the format: YYY-MM-DD");
+				System.out.print("Please enter a date in the format: YYYY-MM-DD > ");
 				String input2 = scanner.next();
 				String regex = "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$";
 			    Pattern pattern = Pattern.compile(regex);
 				while (!(pattern.matcher(input2).find())){
-					System.out.print("Please enter a valid date: YYY-MM-DD  >");
+					System.out.print("Please enter a valid date: YYYY-MM-DD  >");
 					input2 = scanner.next();
  
 				}
 				//rest of 3.3
 				break;
 			case 4:
+				System.out.println("Please enter a 5 digit zip code >");
 				break;
 			case 5:
+				System.out.println("Please enter a 5 digit zip code >");
 				break;
 			case 6:
+				System.out.println("Please enter a 5 digit zip code >");
 				break;
 			case 7:
 				break;
