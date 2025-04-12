@@ -67,12 +67,35 @@ public class UserInterface {
 				break;
 			case 4:
 				System.out.println("Please enter a 5 digit zip code >");
+				String input4 = scanner.next();
+				String regex2 = "^\\d{5}$";
+			    Pattern pattern2 = Pattern.compile(regex2);
+				while (!(pattern2.matcher(input4).find())){
+					System.out.print("Please enter a valid 5 digit zip code  > ");
+					input2 = scanner.next();
+ 
+				}
+
 				break;
 			case 5:
 				System.out.println("Please enter a 5 digit zip code >");
+				String input5 = scanner.next();
+				String regex3 = "^\\d{5}$";
+			    Pattern pattern3 = Pattern.compile(regex3);
+				while (!(pattern3.matcher(input5).find())){
+					System.out.print("Please enter a valid 5 digit zip code  > ");
+					input2 = scanner.next();
+				}
 				break;
 			case 6:
 				System.out.println("Please enter a 5 digit zip code >");
+				String input6 = scanner.next();
+				String regex4 = "^\\d{5}$";
+			    Pattern pattern4 = Pattern.compile(regex4);
+				while (!(pattern4.matcher(input6).find())){
+					System.out.print("Please enter a valid 5 digit zip code  > ");
+					input2 = scanner.next();
+				}
 				break;
 			case 7:
 				break;
