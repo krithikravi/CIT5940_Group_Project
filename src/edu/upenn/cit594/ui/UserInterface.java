@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import edu.upenn.cit594.datamanagement.CSVReader;
 import edu.upenn.cit594.datamanagement.Reader;
@@ -45,6 +46,23 @@ public class UserInterface {
 				}
 				break;
 			case 3:
+				System.out.println("Please enter either \"partial\" or \"full\" >");
+				String input3 = scanner.next();
+				while (!(input3.equals("partial") || input3.equals("full"))){
+					System.out.print("Please enter a valid option: partial or full>");
+					input3 = scanner.next();
+ 
+				}
+				System.out.print("Please enter a date in the format: YYY-MM-DD");
+				String input2 = scanner.next();
+				String regex = "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$";
+			    Pattern pattern = Pattern.compile(regex);
+				while (!(pattern.matcher(input2).find())){
+					System.out.print("Please enter a valid date: YYY-MM-DD  >");
+					input2 = scanner.next();
+ 
+				}
+				//rest of 3.3
 				break;
 			case 4:
 				break;
