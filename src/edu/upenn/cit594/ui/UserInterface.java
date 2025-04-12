@@ -11,15 +11,16 @@ import edu.upenn.cit594.processor.AllZipCodes;
 
 public class UserInterface {
 	
-	int input;
+	int input = Integer.MAX_VALUE;
 	Scanner scanner = new Scanner(System.in);
 	String[] fileName = new String[2];
 	
 	public void runProgram(String[] args) {
-		while((input=scanner.nextInt())!=0) {
+		while(input!=0) {
 			this.menuContent();
 			System.out.println("> ");
 			System.out.flush();
+			input=scanner.nextInt();
 			switch(input) {
 			case 0: 
 				return;
@@ -35,7 +36,7 @@ public class UserInterface {
 //							See how to use util package classes and functions
 							Reader reader = Reader.getReader(fileName[1], new HashMap<>());
 							AllZipCodes allZipCodes = new AllZipCodes(reader.read());
-							allZipCodes.totalPopulation();
+							allZipCodes.totalPopulation(); // want to print this to fileName
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();

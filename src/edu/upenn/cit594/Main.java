@@ -23,7 +23,7 @@ public class Main {
 		LoggerAccessor loggerAccessor;
 		try {
 			HashMap ret = new HashMap<Integer, Area>();
-			Reader reader = Reader.getReader(args[0], ret);;
+			Reader reader = Reader.getReader(args[0].split("=")[1], ret);;
 			HashMap<Integer,Area> covid = reader.read();
 			System.out.println(covid.keySet());
 //			System.out.println(covid.get(19102).getFullVaccinations().values());
@@ -96,9 +96,9 @@ public class Main {
 			/* Need to check this
 			The format of the COVID data file can not be determined from the filename extension (“csv”
 			or “json”, case-insensitive). */
-			if (!(args[2].toLowerCase().endsWith(".csv") || args[2].toLowerCase().endsWith(".json"))) {
-				throw new IllegalArgumentException("covid file has incorrect extension");
-			}
+//			if (!(args[2].toLowerCase().endsWith(".csv") || args[2].toLowerCase().endsWith(".json"))) {
+//				throw new IllegalArgumentException("covid file has incorrect extension");
+//			}
 			
 			UserInterface ui = new UserInterface();
 			ui.runProgram(args);
