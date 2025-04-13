@@ -30,6 +30,7 @@ public class UserInterface {
 			case 1:
 				break;
 			case 2:
+				// here ask about how to print to a file instead of console
 				for (int i = 0; i<args.length; i++) {
 					if (args[i].startsWith("--population=")) {
 						fileName = args[i].split("=");
@@ -47,21 +48,38 @@ public class UserInterface {
 				}
 				break;
 			case 3:
-				System.out.println("Please enter either \"partial\" or \"full\" >");
-				String input3 = scanner.next();
-				while (!(input3.equals("partial") || input3.equals("full"))){
-					System.out.print("Please enter a valid option: partial or full > ");
-					input3 = scanner.next();
- 
-				}
-				System.out.print("Please enter a date in the format: YYYY-MM-DD > ");
-				String input2 = scanner.next();
-				String regex = "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$";
-			    Pattern pattern = Pattern.compile(regex);
-				while (!(pattern.matcher(input2).find())){
-					System.out.print("Please enter a valid date: YYYY-MM-DD  >");
-					input2 = scanner.next();
- 
+//				// This seems to already run in AllZipCodes function
+//				System.out.println("Please enter either \"partial\" or \"full\" >");
+//				String input3 = scanner.next();
+//				while (!(input3.equals("partial") || input3.equals("full"))){
+//					System.out.print("Please enter a valid option: partial or full > ");
+//					input3 = scanner.next();
+// 
+//				}
+//				System.out.print("Please enter a date in the format: YYYY-MM-DD > ");
+//				String input2 = scanner.next();
+//				String regex = "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$";
+//			    Pattern pattern = Pattern.compile(regex);
+//				while (!(pattern.matcher(input2).find())){
+//					System.out.print("Please enter a valid date: YYYY-MM-DD  >");
+//					input2 = scanner.next();
+// 
+//				}
+				
+				for (int i = 0; i<args.length; i++) {
+					if (args[i].startsWith("--covid=")) {
+						fileName = args[i].split("=");
+//						and then here send data to processing where you would get the total population
+						try {
+//							See how to use util package classes and functions
+							Reader reader = Reader.getReader(fileName[1], new HashMap<>());
+							AllZipCodes allZipCodes = new AllZipCodes(reader.read());
+							allZipCodes.totalVaccinations();// want to print this to fileName
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
 				}
 				//rest of 3.3
 				break;
@@ -72,7 +90,7 @@ public class UserInterface {
 			    Pattern pattern2 = Pattern.compile(regex2);
 				while (!(pattern2.matcher(input4).find())){
 					System.out.print("Please enter a valid 5 digit zip code  > ");
-					input2 = scanner.next();
+					input4 = scanner.next();
  
 				}
 
@@ -84,7 +102,7 @@ public class UserInterface {
 			    Pattern pattern3 = Pattern.compile(regex3);
 				while (!(pattern3.matcher(input5).find())){
 					System.out.print("Please enter a valid 5 digit zip code  > ");
-					input2 = scanner.next();
+					input5 = scanner.next();
 				}
 				break;
 			case 6:
@@ -94,7 +112,7 @@ public class UserInterface {
 			    Pattern pattern4 = Pattern.compile(regex4);
 				while (!(pattern4.matcher(input6).find())){
 					System.out.print("Please enter a valid 5 digit zip code  > ");
-					input2 = scanner.next();
+					input6 = scanner.next();
 				}
 				break;
 			case 7:
