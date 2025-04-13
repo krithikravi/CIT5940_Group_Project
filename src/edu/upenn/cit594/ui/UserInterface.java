@@ -9,6 +9,8 @@ import java.util.regex.Pattern;
 import edu.upenn.cit594.datamanagement.CSVReader;
 import edu.upenn.cit594.datamanagement.Reader;
 import edu.upenn.cit594.processor.AllZipCodes;
+import edu.upenn.cit594.processor.SingleZipCode;
+import edu.upenn.cit594.util.Area;
 
 public class UserInterface {
 	
@@ -84,18 +86,35 @@ public class UserInterface {
 				//rest of 3.3
 				break;
 			case 4:
-				System.out.println("Please enter a 5 digit zip code >");
-				String input4 = scanner.next();
-				String regex2 = "^\\d{5}$";
-			    Pattern pattern2 = Pattern.compile(regex2);
-				while (!(pattern2.matcher(input4).find())){
-					System.out.print("Please enter a valid 5 digit zip code  > ");
-					input4 = scanner.next();
- 
+//				System.out.println("Please enter a 5 digit zip code >");
+//				String input4 = scanner.next();
+//				String regex2 = "^\\d{5}$";
+//			    Pattern pattern2 = Pattern.compile(regex2);
+//				while (!(pattern2.matcher(input4).find())){
+//					System.out.print("Please enter a valid 5 digit zip code  > ");
+//					input4 = scanner.next();
+// 
+//				}
+				
+				for (int i = 0; i<args.length; i++) {
+					if (args[i].startsWith("--properties=")) {
+						fileName = args[i].split("=");
+//						and then here send data to processing where you would get the total population
+						try {
+//							See how to use util package classes and functions
+							Reader reader = Reader.getReader(fileName[1], new HashMap<>());
+							SingleZipCode singleZipCode = new SingleZipCode(reader.read());
+							singleZipCode.averageMarketValue(null);// not sure what input should be to averageMarketValue function
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
 				}
 
 				break;
 			case 5:
+				// Ask about what part of code you want to call in util vs processor
 				System.out.println("Please enter a 5 digit zip code >");
 				String input5 = scanner.next();
 				String regex3 = "^\\d{5}$";
@@ -104,6 +123,10 @@ public class UserInterface {
 					System.out.print("Please enter a valid 5 digit zip code  > ");
 					input5 = scanner.next();
 				}
+				Area area = new Area(Integer.parseInt(input5));
+				System.out.println("BEGIN OUTPUT");
+				System.out.println(area.getTotalLivableArea()/area.getPopulation());
+				System.out.println("END OUTPUT");
 				break;
 			case 6:
 				System.out.println("Please enter a 5 digit zip code >");
@@ -114,6 +137,10 @@ public class UserInterface {
 					System.out.print("Please enter a valid 5 digit zip code  > ");
 					input6 = scanner.next();
 				}
+				Area area2 = new Area(Integer.parseInt(input6));
+				System.out.println("BEGIN OUTPUT");
+				System.out.println(area2.getTotalMarketValue()/area2.getPopulation());
+				System.out.println("END OUTPUT");
 				break;
 			case 7:
 				break;
