@@ -13,13 +13,19 @@ import edu.upenn.cit594.processor.SingleZipCode;
 import edu.upenn.cit594.util.Area;
 
 public class UserInterface {
+	HashMap<Integer, Area> hashMap;
+	SingleZipCode singleZipCode;
+	AllZipCodes allZipCodes;
 	
+	public UserInterface(HashMap<Integer, Area> inputHashMap) {
+		this.hashMap = inputHashMap;
+	}
 	
 	int input = Integer.MAX_VALUE;
 	Scanner scanner = new Scanner(System.in);
 	String[] fileName = new String[2];
 	
-	public void runProgram(String[] args) {
+	public void runProgram() {
 		while(input!=0) {
 			this.menuContent();
 			System.out.println();
@@ -33,22 +39,25 @@ public class UserInterface {
 			case 1:
 				break;
 			case 2:
-				// here ask about how to print to a file instead of console
-				for (int i = 0; i<args.length; i++) {
-					if (args[i].startsWith("--population=")) {
-						fileName = args[i].split("=");
-//						and then here send data to processing where you would get the total population
-						try {
-//							See how to use util package classes and functions
-							Reader reader = Reader.getReader(fileName[1], new HashMap<>());
-							AllZipCodes allZipCodes = new AllZipCodes(reader.read());
-							allZipCodes.totalPopulation(); // want to print this to fileName
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-				}
+//				// here ask about how to print to a file instead of console
+//				for (int i = 0; i<args.length; i++) {
+//					if (args[i].startsWith("--population=")) {
+//						fileName = args[i].split("=");
+////						and then here send data to processing where you would get the total population
+//						try {
+////							See how to use util package classes and functions
+//							Reader reader = Reader.getReader(fileName[1], new HashMap<>());
+//							AllZipCodes allZipCodes = new AllZipCodes(reader.read());
+//							allZipCodes.totalPopulation(); // want to print this to fileName
+//						} catch (IOException e) {
+//							// TODO Auto-generated catch block
+//							e.printStackTrace();
+//						}
+//					}
+//				}
+				
+				allZipCodes = new AllZipCodes(this.hashMap);
+				allZipCodes.totalPopulation();
 				break;
 			case 3:
 //				// This seems to already run in AllZipCodes function
@@ -69,22 +78,25 @@ public class UserInterface {
 // 
 //				}
 				
-				for (int i = 0; i<args.length; i++) {
-					if (args[i].startsWith("--covid=")) {
-						fileName = args[i].split("=");
-//						and then here send data to processing where you would get the total population
-						try {
-//							See how to use util package classes and functions
-							Reader reader = Reader.getReader(fileName[1], new HashMap<>());
-							AllZipCodes allZipCodes = new AllZipCodes(reader.read());
-							allZipCodes.totalVaccinations();// want to print this to fileName
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-				}
+//				for (int i = 0; i<args.length; i++) {
+//					if (args[i].startsWith("--covid=")) {
+//						fileName = args[i].split("=");
+////						and then here send data to processing where you would get the total population
+//						try {
+////							See how to use util package classes and functions
+//							Reader reader = Reader.getReader(fileName[1], new HashMap<>());
+//							AllZipCodes allZipCodes = new AllZipCodes(reader.read());
+//							allZipCodes.totalVaccinations();// want to print this to fileName
+//						} catch (IOException e) {
+//							// TODO Auto-generated catch block
+//							e.printStackTrace();
+//						}
+//					}
+//				}
 				//rest of 3.3
+				
+				allZipCodes = new AllZipCodes(this.hashMap);
+				allZipCodes.totalVaccinations();
 				break;
 			case 4:
 //				System.out.println("Please enter a 5 digit zip code >");
@@ -97,54 +109,66 @@ public class UserInterface {
 // 
 //				}
 				
-				for (int i = 0; i<args.length; i++) {
-					if (args[i].startsWith("--properties=")) {
-						fileName = args[i].split("=");
-//						and then here send data to processing where you would get the total population
-						try {
-//							See how to use util package classes and functions
-							Reader reader = Reader.getReader(fileName[1], new HashMap<>());
-							SingleZipCode singleZipCode = new SingleZipCode(reader.read());
-							singleZipCode.averageMarketValue(null);// not sure what input should be to averageMarketValue function
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-				}
+//				for (int i = 0; i<args.length; i++) {
+//					if (args[i].startsWith("--properties=")) {
+//						fileName = args[i].split("=");
+////						and then here send data to processing where you would get the total population
+//						try {
+////							See how to use util package classes and functions
+//							Reader reader = Reader.getReader(fileName[1], new HashMap<>());
+//							SingleZipCode singleZipCode = new SingleZipCode(reader.read());
+//							singleZipCode.averageMarketValue(null);// not sure what input should be to averageMarketValue function
+//						} catch (IOException e) {
+//							// TODO Auto-generated catch block
+//							e.printStackTrace();
+//						}
+//					}
+//				}
+				this.singleZipCode = new SingleZipCode(this.hashMap);
+				this.singleZipCode.averageMarketValue(4);
 
 				break;
 			case 5:
-				// Ask about what part of code you want to call in util vs processor
-				System.out.println("Please enter a 5 digit zip code >");
-				String input5 = scanner.next();
-				String regex3 = "^\\d{5}$";
-			    Pattern pattern3 = Pattern.compile(regex3);
-				while (!(pattern3.matcher(input5).find())){
-					System.out.print("Please enter a valid 5 digit zip code  > ");
-					input5 = scanner.next();
-				}
-				Area area = new Area(Integer.parseInt(input5));
-				System.out.println("BEGIN OUTPUT");
-				System.out.println(area.getTotalLivableArea()/area.getPopulation());
-				System.out.println("END OUTPUT");
+//				// Ask about what part of code you want to call in util vs processor
+//				System.out.println("Please enter a 5 digit zip code >");
+//				String input5 = scanner.next();
+//				String regex3 = "^\\d{5}$";
+//			    Pattern pattern3 = Pattern.compile(regex3);
+//				while (!(pattern3.matcher(input5).find())){
+//					System.out.print("Please enter a valid 5 digit zip code  > ");
+//					input5 = scanner.next();
+//				}
+//				Area area = new Area(Integer.parseInt(input5));
+//				System.out.println("BEGIN OUTPUT");
+//				System.out.println(area.getTotalLivableArea()/area.getPopulation());
+//				System.out.println("END OUTPUT");
+				
+				this.singleZipCode = new SingleZipCode(this.hashMap);
+				this.singleZipCode.averageMarketValue(5);
 				break;
 			case 6:
-				System.out.println("Please enter a 5 digit zip code >");
-				String input6 = scanner.next();
-				String regex4 = "^\\d{5}$";
-			    Pattern pattern4 = Pattern.compile(regex4);
-				while (!(pattern4.matcher(input6).find())){
-					System.out.print("Please enter a valid 5 digit zip code  > ");
-					input6 = scanner.next();
-				}
-				Area area2 = new Area(Integer.parseInt(input6));
-				System.out.println("BEGIN OUTPUT");
-				System.out.println(area2.getTotalMarketValue()/area2.getPopulation());
-				System.out.println("END OUTPUT");
+//				System.out.println("Please enter a 5 digit zip code >");
+//				String input6 = scanner.next();
+//				String regex4 = "^\\d{5}$";
+//			    Pattern pattern4 = Pattern.compile(regex4);
+//				while (!(pattern4.matcher(input6).find())){
+//					System.out.print("Please enter a valid 5 digit zip code  > ");
+//					input6 = scanner.next();
+//				}
+//				Area area2 = new Area(Integer.parseInt(input6));
+//				System.out.println("BEGIN OUTPUT");
+//				System.out.println(area2.getTotalMarketValue()/area2.getPopulation());
+//				System.out.println("END OUTPUT");
+				
+				this.singleZipCode = new SingleZipCode(this.hashMap);
+				this.singleZipCode.averageMarketValue(6);
 				break;
+//				break;
 			case 7:
+				this.singleZipCode = new SingleZipCode(this.hashMap);
+				this.singleZipCode.averageMarketValue(7);
 				break;
+//				break;
 			default:
 				System.err.println("Invalid input. Please try again");
 				continue;
