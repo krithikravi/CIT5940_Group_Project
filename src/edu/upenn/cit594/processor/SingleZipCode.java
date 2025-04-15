@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import edu.upenn.cit594.datamanagement.Input;
 import edu.upenn.cit594.util.*;
 
 public class SingleZipCode extends ZipOperations{
@@ -14,10 +15,10 @@ public class SingleZipCode extends ZipOperations{
 	
 	public void averageMarketValue(Integer choice) {
 		Pattern pattern = Pattern.compile("^\\d{5}", Pattern.CASE_INSENSITIVE);
-		String zipString = Input.getInput("Enter the zip code to look up: must be in the format XXXXX.");
+		String zipString = Input.getValidStringInput("Enter the zip code to look up: must be in the format XXXXX.");
 		Matcher matcher = pattern.matcher(zipString);
 		while (!matcher.find()) {
-			zipString = Input.getInput("Enter the zip code to look up: must be in the format XXXXX.");
+			zipString = Input.getValidStringInput("Enter the zip code to look up: must be in the format XXXXX.");
 			matcher = pattern.matcher(zipString);
 		}
 		Integer zip = Integer.valueOf((String) matcher.group());
