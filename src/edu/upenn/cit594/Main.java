@@ -31,8 +31,11 @@ public class Main {
 //			System.out.println(covid.get(19102).getFullVaccinations().values());
 //			System.out.println(covid.get(19153).getPopulation());
 //			System.out.println(covid.get(19104).getProperties().getFirst().getLivableArea());
-			if (args.length == 0 || args.length>4) {
-				throw new IllegalArgumentException("Required: tweets_file states_file log_file");
+//			if (args.length == 0 || args.length>4) {
+//				throw new IllegalArgumentException("Required: tweets_file states_file log_file");
+//			}
+			if (args.length != 4) {
+				throw new IllegalArgumentException("Requires arguments for --population, --covid, --properties, and --log");
 			}
 			
 //			Check that all arguments are properly formatted
