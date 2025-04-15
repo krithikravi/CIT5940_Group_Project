@@ -11,6 +11,7 @@ import java.util.TreeMap;
 import java.util.regex.Pattern;
 
 import edu.upenn.cit594.datamanagement.*;
+import edu.upenn.cit594.logging.Logger;
 //import edu.upenn.cit594.processor.*;
 import edu.upenn.cit594.ui.*;
 import edu.upenn.cit594.util.*;
@@ -20,7 +21,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		Set<String> argsTraversed = new HashSet<String>();
-		LoggerAccessor loggerAccessor;
+		Logger logger = Logger.getInstance();
 		try {
 			HashMap ret = new HashMap<Integer, Area>();
 			Reader reader = Reader.getReader(args[0].split("=")[1], ret);;
@@ -70,7 +71,8 @@ public class Main {
 			    		throw new IllegalArgumentException("More than one argument for log file");
 			    		
 			    	}
-			    	 loggerAccessor = new LoggerAccessor(args[i]);
+//			    	 loggerAccessor = new LoggerAccessor(args[i]);
+			    	 logger.loggerFileLocation(args[i]);
 			    	
 			    }
 			}
