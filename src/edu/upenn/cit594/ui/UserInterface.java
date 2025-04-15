@@ -14,6 +14,7 @@ import edu.upenn.cit594.util.Area;
 
 public class UserInterface {
 	
+	
 	int input = Integer.MAX_VALUE;
 	Scanner scanner = new Scanner(System.in);
 	String[] fileName = new String[2];

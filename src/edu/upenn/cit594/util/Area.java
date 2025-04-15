@@ -30,7 +30,6 @@ public class Area {
 		this.properties.add(property);
 		this.totalMarketValue+=property.getMarketValue();
 		this.totalLivableArea+=property.getLivableArea();
-//		System.out.println(this.properties);
 	}
 
 	public Integer getZipcode() {

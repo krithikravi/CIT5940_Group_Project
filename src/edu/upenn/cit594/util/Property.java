@@ -1,8 +1,8 @@
 package edu.upenn.cit594.util;
 
 public class Property {
-	Integer marketValue;
-	Integer livableArea;
+	protected Integer marketValue;
+	protected Integer livableArea;
 	public Property(Integer marketValue, Integer livableArea) {
 		this.marketValue = marketValue;
 		this.livableArea = livableArea;
