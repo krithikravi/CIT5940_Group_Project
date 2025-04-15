@@ -56,8 +56,10 @@ public class UserInterface {
 //					}
 //				}
 				
+				System.out.println("BEGIN OUTPUT");
 				allZipCodes = new AllZipCodes(this.hashMap);
 				allZipCodes.totalPopulation();
+				System.out.println("END OUTPUT");
 				break;
 			case 3:
 //				// This seems to already run in AllZipCodes function
