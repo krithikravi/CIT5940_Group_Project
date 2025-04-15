@@ -23,11 +23,11 @@ public class Main {
 		Set<String> argsTraversed = new HashSet<String>();
 		Logger logger = Logger.getInstance();
 		try {
-			HashMap ret = new HashMap<Integer, Area>();
-			Reader reader = Reader.getReader(args[0].split("=")[1], ret);;
-			HashMap<Integer,Area> covid = reader.read();
-			System.out.println(covid.keySet());
-			System.out.println();
+//			HashMap ret = new HashMap<Integer, Area>();
+//			Reader reader = Reader.getReader(args[0].split("=")[1], ret);;
+//			HashMap<Integer,Area> covid = reader.read();
+//			System.out.println(covid.keySet());
+//			System.out.println();
 //			System.out.println(covid.get(19102).getFullVaccinations().values());
 //			System.out.println(covid.get(19153).getPopulation());
 //			System.out.println(covid.get(19104).getProperties().getFirst().getLivableArea());
@@ -102,8 +102,26 @@ public class Main {
 //			if (!(args[2].toLowerCase().endsWith(".csv") || args[2].toLowerCase().endsWith(".json"))) {
 //				throw new IllegalArgumentException("covid file has incorrect extension");
 //			}
+
+//			HashMap ret = new HashMap<Integer, Area>();
+			HashMap ret = new HashMap<Integer, Area>();
+			Reader reader = Reader.getReader(args[0].split("=")[1], ret);;
+			HashMap<Integer,Area> covid = reader.read();
 			
-			UserInterface ui = new UserInterface();
+			
+			
+			for (int i = 1; i<args.length; i++) {
+//				ret.clear();
+				if (args[i].startsWith("--population")) {
+					reader = Reader.getReader(args[i].split("=")[1], ret);
+					ret = reader.read();
+//					HashMap ret = new HashMap<Integer, Area>();
+//					Reader reader = Reader.getReader(args[0].split("=")[1], ret);;
+//					HashMap<Integer,Area> covid = reader.read();
+				}
+			}
+			
+			UserInterface ui = new UserInterface(ret);
 			ui.runProgram(args);
 			
 //			if ((!args[0].toLowerCase().endsWith(".txt") && !args[0].toLowerCase().endsWith(".json")) || !args[1].toLowerCase().endsWith(".csv")) {
