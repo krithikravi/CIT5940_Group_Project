@@ -49,6 +49,7 @@ public class AllZipCodes extends ZipOperations {
 			for (String s: memo.get(date+type)) {
 				System.out.println(s);
 			}
+			System.out.println("END OUTPUT");
 			return;
 		}
 		for (Area zip:zipCodes.values()) {

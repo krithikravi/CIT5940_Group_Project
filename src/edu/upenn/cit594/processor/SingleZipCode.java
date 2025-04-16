@@ -1,5 +1,7 @@
 package edu.upenn.cit594.processor;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,39 +30,42 @@ public class SingleZipCode extends ZipOperations{
 			System.out.println("END OUTPUT");
 			return;
 		}
+		if (memo.containsKey(String.valueOf(zip)+String.valueOf(choice))) {
+			for (String out: memo.get(String.valueOf(zip)+String.valueOf(choice))) {
+				System.out.println(out);
+			}
+			System.out.println("END OUTPUT");
+			return;
+		}
+		String ret ="0";
 		Area location = zipCodes.get(zip);
 		if (choice==4) {
-			if (location.getProperties().isEmpty()) {
-				System.out.println(0);
-				System.out.println("END OUTPUT");
-				return;
+			if (!location.getProperties().isEmpty()) {
+				ret =String.valueOf(location.getTotalMarketValue()/location.getProperties().size()) ;
 			}
-			System.out.println(location.getTotalMarketValue()/location.getProperties().size());
+						
 		}
 		else if (choice==6) {
-			if (location.getPopulation()==0) {
-				System.out.println(0);
-				System.out.println("END OUTPUT");
-				return;
+			if (location.getPopulation()!=0) {
+				ret=String.valueOf(location.getTotalMarketValue()/location.getPopulation());
 			}
-			System.out.println(location.getTotalMarketValue()/location.getPopulation());
+			
 		}
 		else if (choice==7) {
-			if (location.getPopulation()==0 || location.getMaxFullVaccinations()==0) {
-				System.out.println(0);
-				System.out.println("END OUTPUT");
-				return;
+			if (location.getPopulation()!=0 && location.getMaxFullVaccinations()!=0) {
+				ret=String.valueOf((float)location.getTotalMarketValue()/(float)location.getPopulation()/(float)location.getMaxFullVaccinations());
 			}
-			System.out.println(location.getTotalMarketValue()/location.getPopulation()/location.getMaxFullVaccinations());
+			
 		}
 		else {
-			if (location.getProperties().isEmpty()) {
-				System.out.println(0);
-				System.out.println("END OUTPUT");
-				return;
+			if (!location.getProperties().isEmpty()) {
+				ret=String.valueOf(location.getTotalLivableArea()/location.getProperties().size());
 			}
-			System.out.println(location.getTotalLivableArea()/location.getProperties().size());
+			
 		}
+		System.out.println(ret);
+		memo.put(String.valueOf(zip)+String.valueOf(choice), new ArrayList<>(Arrays.asList(ret)));
+//		memo.put(String.valueOf(zip)+String.valueOf(choice), String.valueOf(ret));
 		System.out.println("END OUTPUT");
 	}
 	
