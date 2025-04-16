@@ -97,8 +97,10 @@ public class UserInterface {
 //				}
 				//rest of 3.3
 				
+				System.out.println("BEGIN OUTPUT");
 				allZipCodes = new AllZipCodes(this.hashMap);
 				allZipCodes.totalVaccinations();
+				System.out.println("END OUTPUT");
 				break;
 			case 4:
 //				System.out.println("Please enter a 5 digit zip code >");
@@ -126,9 +128,10 @@ public class UserInterface {
 //						}
 //					}
 //				}
+				System.out.println("BEGIN OUTPUT");
 				this.singleZipCode = new SingleZipCode(this.hashMap);
 				this.singleZipCode.averageMarketValue(4);
-
+				System.out.println("END OUTPUT");
 				break;
 			case 5:
 //				// Ask about what part of code you want to call in util vs processor
@@ -145,8 +148,10 @@ public class UserInterface {
 //				System.out.println(area.getTotalLivableArea()/area.getPopulation());
 //				System.out.println("END OUTPUT");
 				
+				System.out.println("BEGIN OUTPUT");
 				this.singleZipCode = new SingleZipCode(this.hashMap);
 				this.singleZipCode.averageMarketValue(5);
+				System.out.println("BEGIN OUTPUT");
 				break;
 			case 6:
 //				System.out.println("Please enter a 5 digit zip code >");
@@ -162,13 +167,17 @@ public class UserInterface {
 //				System.out.println(area2.getTotalMarketValue()/area2.getPopulation());
 //				System.out.println("END OUTPUT");
 				
+				System.out.println("BEGIN OUTPUT");
 				this.singleZipCode = new SingleZipCode(this.hashMap);
 				this.singleZipCode.averageMarketValue(6);
+				System.out.println("END OUTPUT");
 				break;
 //				break;
 			case 7:
+				System.out.println("BEGIN OUTPUT");
 				this.singleZipCode = new SingleZipCode(this.hashMap);
 				this.singleZipCode.averageMarketValue(7);
+				System.out.println("END OUTPUT");
 				break;
 //				break;
 			default:

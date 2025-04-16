@@ -25,7 +25,7 @@ public class AllZipCodes extends ZipOperations {
 	public void totalVaccinations() {
 		Pattern pattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}", Pattern.CASE_INSENSITIVE);
 		String type = Input.getValidStringInput("Enter the type of vaccination to look up: full or partial.");
-		while (type!="partial" && type!="full") {
+		while (!(type.equals("partial") || type.equals("full"))) {
 			type = Input.getValidStringInput("Enter the type of vaccination to look up: full or partial.");
 		}
 		String dateString = Input.getValidStringInput("Enter the date to look up: must be in the format YYYY-MM-DD.");

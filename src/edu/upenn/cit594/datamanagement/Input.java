@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 //Code from 5910 Starter Code
 public class Input {
-	private static Scanner scanner;          // Scanner for user input
+	private static Scanner scanner = new Scanner(System.in);          // Scanner for user input
 
 	/**
      * Gets valid integer input from the user. Re-prompts the user if the input is not a valid integer.
