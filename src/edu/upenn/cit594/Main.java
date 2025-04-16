@@ -75,6 +75,8 @@ public class Main {
 			    		
 			    	}
 //			    	 loggerAccessor = new LoggerAccessor(args[i]);
+			    	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			    	//wrong file name, need to parse out the --log
 			    	 logger.loggerFileLocation(args[i]);
 			    	
 			    }

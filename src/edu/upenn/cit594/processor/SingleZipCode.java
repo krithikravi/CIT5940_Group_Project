@@ -13,7 +13,7 @@ public class SingleZipCode extends ZipOperations{
 		super(zipCodes);
 	}
 	
-	public void averageMarketValue(Integer choice) {
+	public void runOperation(Integer choice) {
 		Pattern pattern = Pattern.compile("^\\d{5}", Pattern.CASE_INSENSITIVE);
 		String zipString = Input.getValidStringInput("Enter the zip code to look up: must be in the format XXXXX.");
 		Matcher matcher = pattern.matcher(zipString);

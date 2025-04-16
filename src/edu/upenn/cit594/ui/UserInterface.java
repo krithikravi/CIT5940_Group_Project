@@ -27,6 +27,8 @@ public class UserInterface {
 	
 	public void runProgram() {
 		while(input!=0) {
+			//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			//where/how is the output being logged?
 			this.menuContent();
 			System.out.println();
 			System.out.print("> ");
@@ -132,7 +134,7 @@ public class UserInterface {
 //				}
 //				System.out.println("BEGIN OUTPUT");
 				this.singleZipCode = new SingleZipCode(this.hashMap);
-				this.singleZipCode.averageMarketValue(4);
+				this.singleZipCode.runOperation(4);
 //				System.out.println("END OUTPUT");
 				break;
 			case 5:
@@ -152,7 +154,7 @@ public class UserInterface {
 				
 //				System.out.println("BEGIN OUTPUT");
 				this.singleZipCode = new SingleZipCode(this.hashMap);
-				this.singleZipCode.averageMarketValue(5);
+				this.singleZipCode.runOperation(5);
 //				System.out.println("BEGIN OUTPUT");
 				break;
 			case 6:
@@ -171,14 +173,14 @@ public class UserInterface {
 				
 //				System.out.println("BEGIN OUTPUT");
 				this.singleZipCode = new SingleZipCode(this.hashMap);
-				this.singleZipCode.averageMarketValue(6);
+				this.singleZipCode.runOperation(6);
 //				System.out.println("END OUTPUT");
 				break;
 //				break;
 			case 7:
 //				System.out.println("BEGIN OUTPUT");
 				this.singleZipCode = new SingleZipCode(this.hashMap);
-				this.singleZipCode.averageMarketValue(7);
+				this.singleZipCode.runOperation(7);
 //				System.out.println("END OUTPUT");
 				break;
 //				break;
