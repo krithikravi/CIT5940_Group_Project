@@ -34,6 +34,7 @@ public class AllZipCodes extends ZipOperations {
 			dateString = Input.getValidStringInput("Enter the date to look up: must be in the format YYYY-MM-DD.");
 			matcher = pattern.matcher(dateString);
 		}
+		System.out.println("BEGIN OUTPUT");
 		String date = (String) matcher.group();
 		Integer total=0;
 		for (Area zip:zipCodes.values()) {
@@ -44,6 +45,7 @@ public class AllZipCodes extends ZipOperations {
 				System.out.println(zip.getZipcode()+" "+zip.getFullVaccinations().getOrDefault(date, 0)/zip.getPopulation());
 			}
 		}
+		System.out.println("END OUTPUT");
 	}
 	
 	

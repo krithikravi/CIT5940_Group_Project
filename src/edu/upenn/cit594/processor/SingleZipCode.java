@@ -21,6 +21,7 @@ public class SingleZipCode extends ZipOperations{
 			zipString = Input.getValidStringInput("Enter the zip code to look up: must be in the format XXXXX.");
 			matcher = pattern.matcher(zipString);
 		}
+		System.out.println("BEGIN OUTPUT");
 		Integer zip = Integer.valueOf((String) matcher.group());
 		Area location = zipCodes.get(zip);
 		if (choice==4) {
@@ -35,6 +36,7 @@ public class SingleZipCode extends ZipOperations{
 		else {
 			System.out.println(location.getTotalLivableArea()/location.getProperties().size());
 		}
+		System.out.println("END OUTPUT");
 	}
 	
 }
