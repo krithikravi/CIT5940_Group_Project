@@ -31,6 +31,8 @@ public class UserInterface {
 			System.out.println();
 			System.out.print("> ");
 			System.out.flush();
+			//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			//need to use input class and method, no scanner allowed here
 			input=scanner.nextInt();
 			switch(input) {
 			case 0: 
@@ -198,6 +200,8 @@ public class UserInterface {
 		System.out.println("4. Show the average market value for properties in a specified ZIP Code.");
 		System.out.println("5. Show the average total livable area for properties in a specified ZIP Code.");
 		System.out.println("6. Show the total market value of properties, per capita for a specified ZIP Code.");
+		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		//need to change this to showing the total market value per capita divided by the number of full vaccinations for a specific zip code 
 		System.out.println("7. Show the results of your custom feature.");
 	}
 

@@ -24,7 +24,7 @@ public abstract class Reader {
             throw new IllegalArgumentException("Filename cannot be null or empty");
         }
         this.filename = filename;
-        this.ret=current;
+        this.ret=(HashMap<Integer, Area>) current.clone();
     }
     
     

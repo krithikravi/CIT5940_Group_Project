@@ -25,7 +25,7 @@ public class AllZipCodes extends ZipOperations {
 	public void totalVaccinations() {
 		Pattern pattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}", Pattern.CASE_INSENSITIVE);
 		String type = Input.getValidStringInput("Enter the type of vaccination to look up: full or partial.");
-		while (!(type.equals("partial") || type.equals("full"))) {
+		while (!(type.compareToIgnoreCase("partial")==0 || type.compareToIgnoreCase("full")==0)) {
 			type = Input.getValidStringInput("Enter the type of vaccination to look up: full or partial.");
 		}
 		String dateString = Input.getValidStringInput("Enter the date to look up: must be in the format YYYY-MM-DD.");
@@ -36,13 +36,23 @@ public class AllZipCodes extends ZipOperations {
 		}
 		System.out.println("BEGIN OUTPUT");
 		String date = (String) matcher.group();
-		Integer total=0;
 		for (Area zip:zipCodes.values()) {
-			if (type=="partial") {
-				System.out.println(zip.getZipcode()+" "+zip.getPartialVaccinations().getOrDefault(date, 0)/zip.getPopulation());
+			if (zip.getPopulation()==0) {
+				continue;
+			}
+			if (type.compareToIgnoreCase("partial")==0) {
+				if (zip.getPartialVaccinations().getOrDefault(date, 0)==0) {
+					continue;
+				}
+				String format = String.format("%d %.4f", zip.getZipcode(),(double)zip.getPartialVaccinations().getOrDefault(date, 0)/(double)zip.getPopulation());
+				System.out.println(format);
 			}
 			else {
-				System.out.println(zip.getZipcode()+" "+zip.getFullVaccinations().getOrDefault(date, 0)/zip.getPopulation());
+				if (zip.getFullVaccinations().getOrDefault(date, 0)==0) {
+					continue;
+				}
+				String format = String.format("%d %.4f", zip.getZipcode(),(double)zip.getFullVaccinations().getOrDefault(date, 0)/(double)zip.getPopulation());
+				System.out.println(format);
 			}
 		}
 		System.out.println("END OUTPUT");

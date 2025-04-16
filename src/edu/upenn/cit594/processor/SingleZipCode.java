@@ -23,17 +23,42 @@ public class SingleZipCode extends ZipOperations{
 		}
 		System.out.println("BEGIN OUTPUT");
 		Integer zip = Integer.valueOf((String) matcher.group());
+		if (!zipCodes.containsKey(zip)) {
+			System.out.println(0);
+			System.out.println("END OUTPUT");
+			return;
+		}
 		Area location = zipCodes.get(zip);
 		if (choice==4) {
+			if (location.getProperties().isEmpty()) {
+				System.out.println(0);
+				System.out.println("END OUTPUT");
+				return;
+			}
 			System.out.println(location.getTotalMarketValue()/location.getProperties().size());
 		}
 		else if (choice==6) {
+			if (location.getPopulation()==0) {
+				System.out.println(0);
+				System.out.println("END OUTPUT");
+				return;
+			}
 			System.out.println(location.getTotalMarketValue()/location.getPopulation());
 		}
 		else if (choice==7) {
-			System.out.println(location.getTotalLivableArea()/location.getPopulation());
+			if (location.getPopulation()==0 || location.getMaxFullVaccinations()==0) {
+				System.out.println(0);
+				System.out.println("END OUTPUT");
+				return;
+			}
+			System.out.println(location.getTotalMarketValue()/location.getPopulation()/location.getMaxFullVaccinations());
 		}
 		else {
+			if (location.getProperties().isEmpty()) {
+				System.out.println(0);
+				System.out.println("END OUTPUT");
+				return;
+			}
 			System.out.println(location.getTotalLivableArea()/location.getProperties().size());
 		}
 		System.out.println("END OUTPUT");

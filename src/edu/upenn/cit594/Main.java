@@ -108,16 +108,16 @@ public class Main {
 
 //			HashMap ret = new HashMap<Integer, Area>();
 			HashMap ret = new HashMap<Integer, Area>();
-			Reader reader = Reader.getReader(args[0].split("=")[1], ret);;
-			HashMap<Integer,Area> covid = reader.read();
+//			Reader reader = Reader.getReader(args[0].split("=")[1], ret);;
+//			HashMap<Integer,Area> covid = reader.read();
 			
 			
 			
-			for (int i = 1; i<args.length; i++) {
+			for (int i = 0; i<args.length; i++) {
 //				ret.clear();
-				if (args[i].startsWith("--population")) {
-					reader = Reader.getReader(args[i].split("=")[1], ret);
-					ret = reader.read();
+				if (!args[i].startsWith("--log")) {
+					Reader reader = Reader.getReader(args[i].split("=")[1], ret);
+					ret = (HashMap) reader.read().clone();
 //					HashMap ret = new HashMap<Integer, Area>();
 //					Reader reader = Reader.getReader(args[0].split("=")[1], ret);;
 //					HashMap<Integer,Area> covid = reader.read();
