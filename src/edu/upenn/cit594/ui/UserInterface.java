@@ -61,6 +61,8 @@ public class UserInterface {
 //				}
 				
 				System.out.println("BEGIN OUTPUT");
+				//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+				//can just instantiate one allzipcodes and singlezipcode object at the start and call, no need to create one for each call
 				allZipCodes = new AllZipCodes(this.hashMap);
 				allZipCodes.totalPopulation();
 				System.out.println("END OUTPUT");

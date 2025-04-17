@@ -118,7 +118,14 @@ public class Main {
 			for (int i = 0; i<args.length; i++) {
 //				ret.clear();
 				if (!args[i].startsWith("--log")) {
-					Reader reader = Reader.getReader(args[i].split("=")[1], ret);
+					String filename=args[i].split("=")[1];
+					Reader reader;
+					if (!filename.toLowerCase().endsWith("json")) {
+						reader = new CSVReader(filename, ret);
+					}
+					else {
+						reader = new JSONReader(filename, ret);
+					}
 					ret = (HashMap) reader.read().clone();
 //					HashMap ret = new HashMap<Integer, Area>();
 //					Reader reader = Reader.getReader(args[0].split("=")[1], ret);;
@@ -128,41 +135,6 @@ public class Main {
 			
 			UserInterface ui = new UserInterface(ret);
 			ui.runProgram();
-			
-//			if ((!args[0].toLowerCase().endsWith(".txt") && !args[0].toLowerCase().endsWith(".json")) || !args[1].toLowerCase().endsWith(".csv")) {
-//				throw new IllegalArgumentException("Incorrect file extension.");
-//			}
-//			File tweetFile = new File(args[0]);
-//			File stateFile = new File(args[1]);
-//			File logFile = new File(args[2]);
-//			
-//			if (!tweetFile.canRead()) {
-//				throw new IOException("Cannot read tweet file: " + args[0]);
-//			}
-//			if (!stateFile.canRead()) {
-//				throw new IOException("Cannot read state file: " + args[1]);
-//			}
-//
-//			if (logFile.exists()) {
-//				if (!logFile.canWrite()) {
-//					throw new IOException("Cannot write to existing log file: " + args[2]);
-//				}
-//			} else {
-//				File logDir = logFile.getParentFile();
-//				if (logDir != null && !logDir.canWrite()) {
-//					throw new IOException("Cannot create log file in directory: " + logDir);
-//				}
-//			}
-//			
-//			Reader reader = Reader.getReader(args[0]);
-//			ArrayList<Tweet> tweets = reader.read();
-//			
-//			Reader stateReader = Reader.getReader(args[1]);
-//			ArrayList<State> states = stateReader.read();
-//			
-//			TweetFinder fluTweets = new TweetFinder(tweets, states, args[2]);
-//			TreeMap finalTweets = fluTweets.findTweets();
-//			PrintResult.printResult(finalTweets);
 			
 		} catch (IllegalArgumentException e) {
 			System.err.println("Error: " + e.getMessage());
