@@ -7,14 +7,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import edu.upenn.cit594.datamanagement.Input;
+import edu.upenn.cit594.logging.Logger;
 import edu.upenn.cit594.util.*;
 
 public class SingleZipCode extends ZipOperations{
 	protected HashMap<Integer,SingleStrategy> operationStrategies;
 	
 
-	public SingleZipCode(HashMap<Integer, Area> zipCodes) {
-		super(zipCodes);
+	public SingleZipCode(HashMap<Integer, Area> zipCodes, Logger logger) {
+		super(zipCodes, logger);
 		operationStrategies=new HashMap<Integer,SingleStrategy>();
 		operationStrategies.put(4,new AverageMarketValueStrategy());
 		operationStrategies.put(5,new AverageTotalLivableAreaStrategy());
@@ -26,9 +27,11 @@ public class SingleZipCode extends ZipOperations{
 	public void runOperation(Integer choice) {
 		Pattern pattern = Pattern.compile("^\\d{5}", Pattern.CASE_INSENSITIVE);
 		String zipString = Input.getValidStringInput("Enter the zip code to look up: must be in the format XXXXX.");
+		logger.log(zipString);
 		Matcher matcher = pattern.matcher(zipString);
 		while (!matcher.find()) {
 			zipString = Input.getValidStringInput("Enter the zip code to look up: must be in the format XXXXX.");
+			logger.log(zipString);
 			matcher = pattern.matcher(zipString);
 		}
 		System.out.println("BEGIN OUTPUT");

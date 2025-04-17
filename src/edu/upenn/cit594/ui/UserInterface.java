@@ -7,18 +7,25 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 import edu.upenn.cit594.datamanagement.CSVReader;
+import edu.upenn.cit594.datamanagement.Input;
 import edu.upenn.cit594.datamanagement.Reader;
+import edu.upenn.cit594.logging.Logger;
 import edu.upenn.cit594.processor.AllZipCodes;
 import edu.upenn.cit594.processor.SingleZipCode;
 import edu.upenn.cit594.util.Area;
 
 public class UserInterface {
 	HashMap<Integer, Area> hashMap;
-	SingleZipCode singleZipCode;
-	AllZipCodes allZipCodes;
+	SingleZipCode singleZipCode = new SingleZipCode(this.hashMap, this.logger);
+	AllZipCodes allZipCodes = new AllZipCodes(this.hashMap, this.logger);
 	
-	public UserInterface(HashMap<Integer, Area> inputHashMap) {
+	Logger logger;
+	String[] args;
+	
+	public UserInterface(HashMap<Integer, Area> inputHashMap, Logger logger, String[] args) {
 		this.hashMap = inputHashMap;
+		this.logger = logger;
+		this.args = args;
 	}
 	
 	int input = Integer.MAX_VALUE;
@@ -35,7 +42,9 @@ public class UserInterface {
 			System.out.flush();
 			//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			//need to use input class and method, scanner here violated N-tier architecture
-			input=scanner.nextInt();
+//			input=scanner.nextInt();
+			input = Input.getValidIntInput();
+			this.logger.log(Integer.toString(input));
 			switch(input) {
 			case 0: 
 				return;
@@ -63,7 +72,7 @@ public class UserInterface {
 				System.out.println("BEGIN OUTPUT");
 				//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				//can just instantiate one allzipcodes and singlezipcode object at the start and call, no need to create one for each call
-				allZipCodes = new AllZipCodes(this.hashMap);
+//				allZipCodes = new AllZipCodes(this.hashMap);
 				allZipCodes.totalPopulation();
 				System.out.println("END OUTPUT");
 				break;
@@ -104,7 +113,7 @@ public class UserInterface {
 				//rest of 3.3
 				
 //				System.out.println("BEGIN OUTPUT");
-				allZipCodes = new AllZipCodes(this.hashMap);
+//				allZipCodes = new AllZipCodes(this.hashMap);
 				allZipCodes.totalVaccinations();
 //				System.out.println("END OUTPUT");
 				break;
@@ -135,7 +144,7 @@ public class UserInterface {
 //					}
 //				}
 //				System.out.println("BEGIN OUTPUT");
-				this.singleZipCode = new SingleZipCode(this.hashMap);
+//				this.singleZipCode = new SingleZipCode(this.hashMap);
 				this.singleZipCode.runOperation(4);
 //				System.out.println("END OUTPUT");
 				break;
@@ -155,7 +164,7 @@ public class UserInterface {
 //				System.out.println("END OUTPUT");
 				
 //				System.out.println("BEGIN OUTPUT");
-				this.singleZipCode = new SingleZipCode(this.hashMap);
+//				this.singleZipCode = new SingleZipCode(this.hashMap);
 				this.singleZipCode.runOperation(5);
 //				System.out.println("BEGIN OUTPUT");
 				break;
@@ -174,14 +183,14 @@ public class UserInterface {
 //				System.out.println("END OUTPUT");
 				
 //				System.out.println("BEGIN OUTPUT");
-				this.singleZipCode = new SingleZipCode(this.hashMap);
+//				this.singleZipCode = new SingleZipCode(this.hashMap);
 				this.singleZipCode.runOperation(6);
 //				System.out.println("END OUTPUT");
 				break;
 //				break;
 			case 7:
 //				System.out.println("BEGIN OUTPUT");
-				this.singleZipCode = new SingleZipCode(this.hashMap);
+//				this.singleZipCode = new SingleZipCode(this.hashMap);
 				this.singleZipCode.runOperation(7);
 //				System.out.println("END OUTPUT");
 				break;

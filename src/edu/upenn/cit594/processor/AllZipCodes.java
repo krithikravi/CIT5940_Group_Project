@@ -7,14 +7,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import edu.upenn.cit594.datamanagement.Input;
+import edu.upenn.cit594.logging.Logger;
 import edu.upenn.cit594.util.*;
+//import jdk.jfr.internal.Logger;
 
 public class AllZipCodes extends ZipOperations {
 	
 	
 	
-	public AllZipCodes(HashMap<Integer, Area> zipCodes) {
-		super(zipCodes);
+	public AllZipCodes(HashMap<Integer, Area> zipCodes, Logger logger) {
+		super(zipCodes, logger);
 	}
 
 	public void totalPopulation() {
@@ -33,13 +35,17 @@ public class AllZipCodes extends ZipOperations {
 	public void totalVaccinations() {
 		Pattern pattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}", Pattern.CASE_INSENSITIVE);
 		String type = Input.getValidStringInput("Enter the type of vaccination to look up: full or partial.");
+		logger.log(type);
 		while (!(type.compareToIgnoreCase("partial")==0 || type.compareToIgnoreCase("full")==0)) {
 			type = Input.getValidStringInput("Enter the type of vaccination to look up: full or partial.");
+			logger.log(type);
 		}
 		String dateString = Input.getValidStringInput("Enter the date to look up: must be in the format YYYY-MM-DD.");
+		logger.log(dateString);
 		Matcher matcher = pattern.matcher(dateString);
 		while (!matcher.find()) {
 			dateString = Input.getValidStringInput("Enter the date to look up: must be in the format YYYY-MM-DD.");
+			logger.log(dateString);
 			matcher = pattern.matcher(dateString);
 		}
 		System.out.println("BEGIN OUTPUT");

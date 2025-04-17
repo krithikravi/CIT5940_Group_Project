@@ -11,7 +11,7 @@ public class Input {
      *
      * @return A valid integer input
      */
-    private static int getValidIntInput() {
+	public static int getValidIntInput() {
         while (true) { // Infinite loop to keep asking for input until it's valid
             try {
                 return Integer.parseInt(scanner.nextLine().trim()); // Try to parse the input as an integer

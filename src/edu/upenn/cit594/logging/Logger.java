@@ -29,21 +29,31 @@ public class Logger {
 	
 	// non-static method
 	public void log(String msg) {
+		try {
+		out = new PrintWriter(new FileWriter(this.outFile, true));
 		out.println(System.currentTimeMillis() + " " + msg);
 		out.flush();
-	}
-	
-	public void loggerFileLocation(String fileName) {
-		this.outFile = fileName;
-		try {
-			out = new PrintWriter(new FileWriter(this.outFile, true));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		out.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+//		out.println(System.currentTimeMillis() + " " + msg);
+//		out.flush();
+//		out.close();
+	}
+	
+	public void loggerFileLocation(String fileName) {
+		this.outFile = fileName;
+//		try {
+//			out = new PrintWriter(new FileWriter(this.outFile, true));
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 
 }

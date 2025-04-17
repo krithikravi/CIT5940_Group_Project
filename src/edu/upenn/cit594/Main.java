@@ -86,6 +86,7 @@ public class Main {
 			for (int i = 0; i<args.length; i++) {
 				if (args[i].startsWith("--log")) {
 					logger.loggerFileLocation(args[i].split("=")[1]);
+					break;
 				}
 			}
 			
@@ -143,13 +144,14 @@ public class Main {
 						reader = new JSONReader(filename, ret);
 					}
 					ret = (HashMap) reader.read().clone();
+					logger.log(args[i]);
 //					HashMap ret = new HashMap<Integer, Area>();
 //					Reader reader = Reader.getReader(args[0].split("=")[1], ret);;
 //					HashMap<Integer,Area> covid = reader.read();
 				}
 			}
 			
-			UserInterface ui = new UserInterface(ret);
+			UserInterface ui = new UserInterface(ret, logger, args);
 			ui.runProgram();
 			
 		} catch (IllegalArgumentException e) {
