@@ -18,7 +18,7 @@ public class Logger {
 	// 1. private constructor with initialization
     private Logger() {
         //            File file = new File("src/edu/upenn/cit594/datamanagement/output.txt");
-		out = new PrintWriter(System.err);
+		this.outFile = "System.err";
     }
 	
 	// 2. singleton instance
