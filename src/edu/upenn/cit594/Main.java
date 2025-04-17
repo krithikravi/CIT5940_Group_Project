@@ -31,12 +31,12 @@ public class Main {
 //			System.out.println(covid.get(19102).getFullVaccinations().values());
 //			System.out.println(covid.get(19153).getPopulation());
 //			System.out.println(covid.get(19104).getProperties().getFirst().getLivableArea());
-//			if (args.length == 0 || args.length>4) {
-//				throw new IllegalArgumentException("Required: tweets_file states_file log_file");
-//			}
-			if (args.length != 4) {
-				throw new IllegalArgumentException("Requires arguments for --population, --covid, --properties, and --log");
+			if (args.length == 0 || args.length>4) {
+				throw new IllegalArgumentException("Required: tweets_file states_file log_file");
 			}
+//			if (args.length != 4) {
+//				throw new IllegalArgumentException("Requires arguments for --population, --covid, --properties, and --log");
+//			}
 			
 //			Check that all arguments are properly formatted
 			for (int i = 0; i<args.length; i++) {
@@ -77,10 +77,26 @@ public class Main {
 //			    	 loggerAccessor = new LoggerAccessor(args[i]);
 			    	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			    	//wrong file name, need to parse out the --log
-			    	 logger.loggerFileLocation(args[i]);
+//			    	 logger.loggerFileLocation(args[i]);
 			    	
 			    }
 			}
+			
+//			This should be setting the location for the log file
+			for (int i = 0; i<args.length; i++) {
+				if (args[i].startsWith("--log")) {
+					logger.loggerFileLocation(args[i].split("=")[1]);
+				}
+			}
+			
+//			Log the arguments
+			StringBuilder sb = new StringBuilder();
+			for (int i = 0; i<args.length; i++) {
+				sb.append(" " + args[i]);
+			}
+			logger.log(sb.toString().strip());
+			
+//			    	 logger.loggerFileLocation(args[i]);
 			
 //			if (!args[0].startsWith("--population=")) {
 //				throw new IllegalArgumentException("Required argument format: --population=pop.csv"

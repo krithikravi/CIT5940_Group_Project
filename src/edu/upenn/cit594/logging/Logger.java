@@ -17,13 +17,8 @@ public class Logger {
 	
 	// 1. private constructor with initialization
     private Logger() {
-        try {
-            File file = new File("src/edu/upenn/cit594/datamanagement/output.txt");
-            out = new PrintWriter(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            out = new PrintWriter(System.out);
-        }
+        //            File file = new File("src/edu/upenn/cit594/datamanagement/output.txt");
+		out = new PrintWriter(System.err);
     }
 	
 	// 2. singleton instance
@@ -34,7 +29,7 @@ public class Logger {
 	
 	// non-static method
 	public void log(String msg) {
-		out.println(msg);
+		out.println(System.currentTimeMillis() + " " + msg);
 		out.flush();
 	}
 	
