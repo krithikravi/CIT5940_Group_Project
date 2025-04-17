@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import edu.upenn.cit594.datamanagement.CSVReader;
@@ -20,12 +21,14 @@ public class UserInterface {
 	AllZipCodes allZipCodes = new AllZipCodes(this.hashMap, this.logger);
 	
 	Logger logger;
-	String[] args;
+	Set argsTraversed;
 	
-	public UserInterface(HashMap<Integer, Area> inputHashMap, Logger logger, String[] args) {
+	boolean printRegularMenu = true;
+	
+	public UserInterface(HashMap<Integer, Area> inputHashMap, Logger logger, Set argsTraversed) {
 		this.hashMap = inputHashMap;
 		this.logger = logger;
-		this.args = args;
+		this.argsTraversed = argsTraversed;
 	}
 	
 	int input = Integer.MAX_VALUE;
@@ -36,7 +39,12 @@ public class UserInterface {
 		while(input!=0) {
 			//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			//where/how is the output being logged?
-			this.menuContent();
+			if (printRegularMenu) {
+				this.menuContent();
+//				printRegularMenu = true;
+			}
+			printRegularMenu = true;
+//			this.menuContent();
 			System.out.println();
 			System.out.print("> ");
 			System.out.flush();
@@ -50,6 +58,8 @@ public class UserInterface {
 				return;
 //				break;
 			case 1:
+				this.menuContentFromInputs(argsTraversed);
+				this.printRegularMenu = false;
 				break;
 			case 2:
 //				// here ask about how to print to a file instead of console
@@ -215,7 +225,39 @@ public class UserInterface {
 		System.out.println("6. Show the total market value of properties, per capita for a specified ZIP Code.");
 		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		//need to change this to showing the total market value per capita divided by the number of full vaccinations for a specific zip code 
-		System.out.println("7. Show the results of your custom feature.");
+//		System.out.println("7. Show the results of your custom feature.");
+		System.out.println("7. Show the total market value per capita divided by the number of full vaccinations for a specific zip code.");
+	}
+	
+	public void menuContentFromInputs(Set argsTraversed) {
+//		boolean printMinimalMenu = false;
+		if (argsTraversed.contains("--population")) {
+			System.out.println("0. Exit the program.");
+			System.out.println("1. Show the available actions.");
+			System.out.println("2. Show the total population for all ZIP Codes.");
+		} 
+		if(argsTraversed.contains("--population") && argsTraversed.contains("--covid")) {
+//			System.out.println("0. Exit the program.");
+//			System.out.println("1. Show the available actions.");
+//			System.out.println("2. Show the total population for all ZIP Codes.");
+			System.out.println("3. Show the total vaccinations per capita for each ZIP Code for the specified date.");
+		} 
+		if(argsTraversed.contains("--population") && argsTraversed.contains("--covid") && argsTraversed.contains("--properties")) {
+//			System.out.println("0. Exit the program.");
+//			System.out.println("1. Show the available actions.");
+//			System.out.println("2. Show the total population for all ZIP Codes.");
+//			System.out.println("3. Show the total vaccinations per capita for each ZIP Code for the specified date.");
+			System.out.println("4. Show the average market value for properties in a specified ZIP Code.");
+			System.out.println("5. Show the average total livable area for properties in a specified ZIP Code.");
+			System.out.println("6. Show the total market value of properties, per capita for a specified ZIP Code.");
+			System.out.println("7. Show the total market value per capita divided by the number of full vaccinations for a specific zip code.");
+		} 
+		
+		if (!(argsTraversed.contains("--population") || argsTraversed.contains("--covid") || argsTraversed.contains("--properties"))) {
+			System.out.println("0. Exit the program.");
+			System.out.println("1. Show the available actions.");
+		}
+
 	}
 
 }

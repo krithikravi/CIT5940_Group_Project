@@ -31,16 +31,21 @@ public class Main {
 //			System.out.println(covid.get(19102).getFullVaccinations().values());
 //			System.out.println(covid.get(19153).getPopulation());
 //			System.out.println(covid.get(19104).getProperties().getFirst().getLivableArea());
-			if (args.length == 0 || args.length>4) {
-				throw new IllegalArgumentException("Required: tweets_file states_file log_file");
+//			if (args.length == 0 || args.length>4) {
+//				throw new IllegalArgumentException("Required: tweets_file states_file log_file");
+//			}
+			if (args.length != 4) {
+				throw new IllegalArgumentException("Requires arguments for --population, --covid, --properties, and --log");
 			}
-//			if (args.length != 4) {
+			
+//			// Maybe try this to have the program take more variable number of arguments
+//			if (args.length < 0 || args.length > 4) {
 //				throw new IllegalArgumentException("Requires arguments for --population, --covid, --properties, and --log");
 //			}
 			
 //			Check that all arguments are properly formatted
 			for (int i = 0; i<args.length; i++) {
-				argsTraversed.clear(); //= new HashSet<String>(); 
+//				argsTraversed.clear(); //= new HashSet<String>(); 
 				String regex = "^--(?<name>.+?)=(?<value>.+)$";
 			    Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
 			    if (!pattern.matcher(args[i]).find()) {
@@ -49,28 +54,28 @@ public class Main {
 			    }
 			    
 			    if (args[i].startsWith("--population=")) {
-			    	if (!argsTraversed.add("--population=")) {
+			    	if (!argsTraversed.add("--population")) {
 			    		throw new IllegalArgumentException("More than one argument for population file");
 			    		
 			    	}
 			    	
 			    }
 			    if (args[i].startsWith("--covid=")) {
-			    	if (!argsTraversed.add("--covid=")) {
+			    	if (!argsTraversed.add("--covid")) {
 			    		throw new IllegalArgumentException("More than one argument for covid file");
 			    		
 			    	}
 			    	
 			    }
 			    if (args[i].startsWith("--properties=")) {
-			    	if (!argsTraversed.add("--properties=")) {
+			    	if (!argsTraversed.add("--properties")) {
 			    		throw new IllegalArgumentException("More than one argument for properties file");
 			    		
 			    	}
 			    	
 			    }
 			    if (args[i].startsWith("--log=")) {
-			    	if (!argsTraversed.add("--log=")) {
+			    	if (!argsTraversed.add("--log")) {
 			    		throw new IllegalArgumentException("More than one argument for log file");
 			    		
 			    	}
@@ -151,7 +156,7 @@ public class Main {
 				}
 			}
 			
-			UserInterface ui = new UserInterface(ret, logger, args);
+			UserInterface ui = new UserInterface(ret, logger, argsTraversed);
 			ui.runProgram();
 			
 		} catch (IllegalArgumentException e) {
