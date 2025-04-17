@@ -45,37 +45,10 @@ public class SingleZipCode extends ZipOperations{
 			System.out.println("END OUTPUT");
 			return;
 		}
-//		String ret ="0";
 		Area location = zipCodes.get(zip);
 		String ret  = operationStrategies.get(choice).calculateOperation(location);
-		
-//		if (choice==4) {
-//			if (!location.getProperties().isEmpty()) {
-//				ret =String.valueOf(location.getTotalMarketValue()/location.getProperties().size()) ;
-//			}
-//						
-//		}
-//		else if (choice==6) {
-//			if (location.getPopulation()!=0) {
-//				ret=String.valueOf(location.getTotalMarketValue()/location.getPopulation());
-//			}
-//			
-//		}
-//		else if (choice==7) {
-//			if (location.getPopulation()!=0 && location.getMaxFullVaccinations()!=0) {
-//				ret=String.valueOf((float)location.getTotalMarketValue()/(float)location.getPopulation()/(float)location.getMaxFullVaccinations());
-//			}
-//			
-//		}
-//		else {
-//			if (!location.getProperties().isEmpty()) {
-//				ret=String.valueOf(location.getTotalLivableArea()/location.getProperties().size());
-//			}
-//			
-//		}
 		System.out.println(ret);
 		memo.put(String.valueOf(zip)+String.valueOf(choice), new ArrayList<>(Arrays.asList(ret)));
-//		memo.put(String.valueOf(zip)+String.valueOf(choice), String.valueOf(ret));
 		System.out.println("END OUTPUT");
 	}
 	

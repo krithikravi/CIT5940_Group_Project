@@ -34,7 +34,7 @@ public class UserInterface {
 			System.out.print("> ");
 			System.out.flush();
 			//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			//need to use input class and method, no scanner allowed here
+			//need to use input class and method, scanner here violated N-tier architecture
 			input=scanner.nextInt();
 			switch(input) {
 			case 0: 
