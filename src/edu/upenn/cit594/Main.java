@@ -27,14 +27,14 @@ public class Main {
 //			if (args.length == 0 || args.length>4) {
 //				throw new IllegalArgumentException("Required: tweets_file states_file log_file");
 //			}
-			if (args.length != 4) {
-				throw new IllegalArgumentException("Requires arguments for --population, --covid, --properties, and --log");
-			}
-			
-//			// Maybe try this to have the program take more variable number of arguments
-//			if (args.length < 0 || args.length > 4) {
+//			if (args.length != 4) {
 //				throw new IllegalArgumentException("Requires arguments for --population, --covid, --properties, and --log");
 //			}
+			
+			// Maybe try this to have the program take more variable number of arguments
+			if (args.length < 0 || args.length > 4) {
+				throw new IllegalArgumentException("Requires 1-4 arguments: --population, --covid, --properties, and --log");
+			}
 			
 //			Check that all arguments are properly formatted
 			for (int i = 0; i<args.length; i++) {
