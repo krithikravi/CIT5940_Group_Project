@@ -33,7 +33,7 @@ public class Main {
 			
 			// Maybe try this to have the program take more variable number of arguments
 			if (args.length < 0 || args.length > 4) {
-				throw new IllegalArgumentException("Requires 1-4 arguments: --population, --covid, --properties, and --log");
+				throw new IllegalArgumentException("Requires up to 4 arguments: --population, --covid, --properties, and --log");
 			}
 			
 //			Check that all arguments are properly formatted
