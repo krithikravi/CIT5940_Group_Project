@@ -1,0 +1,21 @@
+1744935384133 --population=population.csv --covid=covid_data.csv --properties=downsampled_properties.csv --log=log.txt
+1744935384158 --population=population.csv
+1744935384518 --covid=covid_data.csv
+1744935384584 --properties=downsampled_properties.csv
+1744935392989 2
+1744935584579 --population=population.csv --covid=covid_data.csv --properties=downsampled_properties.csv --log=log.txt
+1744935584600 --population=population.csv
+1744935584944 --covid=covid_data.csv
+1744935584996 --properties=downsampled_properties.csv
+1744935587897 2
+1744935589445 2
+1744935596661 3
+1744935600167 partial
+1744935604762 2021-03-25
+1744935609281 7
+1744935615546 19124
+1744935618697 7
+1744935620435 95124
+1744935626681 2
+1744935631771 4
+1744935633390 95124

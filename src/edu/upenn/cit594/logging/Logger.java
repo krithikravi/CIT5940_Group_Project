@@ -30,6 +30,8 @@ public class Logger {
 	// non-static method
 	public void log(String msg) {
 		try {
+			//!!!!!!!!!!!!!!!!!!!
+			//might wanna instantiate just one writer and change it if the filename changes & log is called, for efficiency
 		out = new PrintWriter(new FileWriter(this.outFile, true));
 		out.println(System.currentTimeMillis() + " " + msg);
 		out.flush();
@@ -44,6 +46,7 @@ public class Logger {
 	}
 	
 	public void loggerFileLocation(String fileName) {
+		
 		this.outFile = fileName;
 //		try {
 //			out = new PrintWriter(new FileWriter(this.outFile, true));

@@ -17,8 +17,8 @@ import edu.upenn.cit594.util.Area;
 
 public class UserInterface {
 	HashMap<Integer, Area> hashMap;
-	SingleZipCode singleZipCode = new SingleZipCode(this.hashMap, this.logger);
-	AllZipCodes allZipCodes = new AllZipCodes(this.hashMap, this.logger);
+	SingleZipCode singleZipCode;
+	AllZipCodes allZipCodes;
 	
 	Logger logger;
 	Set argsTraversed;
@@ -29,6 +29,8 @@ public class UserInterface {
 		this.hashMap = inputHashMap;
 		this.logger = logger;
 		this.argsTraversed = argsTraversed;
+		singleZipCode = new SingleZipCode(this.hashMap, this.logger);
+		allZipCodes = new AllZipCodes(this.hashMap, this.logger);
 	}
 	
 	int input = Integer.MAX_VALUE;
