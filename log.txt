@@ -19,3 +19,22 @@
 1744935626681 2
 1744935631771 4
 1744935633390 95124
+1744936153426 --population=population.csv --covid=covid_data.csv --properties=downsampled_properties.csv --log=log.txt
+1744936153447 --population=population.csv
+1744936153798 --covid=covid_data.csv
+1744936153850 --properties=downsampled_properties.csv
+1744936286796 --population=population.csv --covid=covid_data.csv --properties=downsampled_properties.csv --log=log.txt
+1744936286811 --population=population.csv
+1744936287110 --covid=covid_data.csv
+1744936287188 --properties=downsampled_properties.csv
+1745022401588 --population=population.csv --covid=covid_data.csv --properties=downsampled_properties.csv --log=log.txt
+1745022401607 --population=population.csv
+1745022401917 --covid=covid_data.csv
+1745022401967 --properties=downsampled_properties.csv
+1745022404809 1
+1745022408628 2
+1745022416734 5
+1745022420707 191256
+1745022446606 19125
+1745022452008 4
+1745022453581 19125

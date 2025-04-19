@@ -109,11 +109,16 @@ public class Main {
 				if (!args[i].startsWith("--log")) {
 					String filename=args[i].split("=")[1];
 					Reader reader;
-					if (!filename.toLowerCase().endsWith("json")) {
+					if (filename.toLowerCase().endsWith("json")) {
+						reader = new JSONReader(filename, ret);
+						
+					}
+					else if (filename.toLowerCase().endsWith("csv")){
 						reader = new CSVReader(filename, ret);
 					}
 					else {
-						reader = new JSONReader(filename, ret);
+						throw new IllegalArgumentException("Invalid file extension");
+			    		
 					}
 					ret = (HashMap) reader.read().clone();
 					logger.log(args[i]);

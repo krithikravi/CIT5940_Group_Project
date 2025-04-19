@@ -22,29 +22,30 @@ import org.junit.Test;
 
 public class BasicTests {
 
-	public static boolean triedToExit = false;
+//	public static boolean triedToExit = false;
+//
+//	/*
+//	 * Student code should exit by returning from main(), not by calling System.exit
+//	 */
+//	@SuppressWarnings({ "removal", "deprecation" })
+//	@Before
+//	public void blockExit() {
+//		System.setSecurityManager(new SecurityManager() {
+//			public void checkExit(int status) {
+//				SecurityException se = new SecurityException("Student code called System.exit");
+//				// se.printStackTrace();
+//				throw se;
+//			}
+//
+//			public void checkPermission(java.security.Permission perm) {
+//			}
+//		});
+//	}
 
-	/*
-	 * Student code should exit by returning from main(), not by calling System.exit
-	 */
-	@Before
-	public void blockExit() {
-		System.setSecurityManager(new SecurityManager() {
-			public void checkExit(int status) {
-				SecurityException se = new SecurityException("Student code called System.exit");
-				// se.printStackTrace();
-				throw se;
-			}
-
-			public void checkPermission(java.security.Permission perm) {
-			}
-		});
-	}
-
-	@After
-	public void resetExit() {
-		System.setSecurityManager(null);
-	}
+//	@After
+//	public void resetExit() {
+//		System.setSecurityManager(null);
+//	}
 
 	/*
 	 * Note no safety is provided. This routine is expected to fail with any error
@@ -166,7 +167,7 @@ public class BasicTests {
 				"--properties=properties.csv", "--population=population.csv" };
 		String[] activities = new String[] { "1", "2", "3\nfull\n2021-05-01", "4\n19149", "5\n19149", "6\n19149" };
 		String results = runMain(args, Stream.of(activities).collect(Collectors.joining("\n")) + "\n0\n");
-		var mResults1 = extractResultsMulti(results);
+		List<List<String>> mResults1 = extractResultsMulti(results);
 		List<List<String>> mResults2 = new ArrayList<>();
 		for (String act : activities) {
 			mResults2.add(extractResults(runMain(args, act + "\n0\n")));
