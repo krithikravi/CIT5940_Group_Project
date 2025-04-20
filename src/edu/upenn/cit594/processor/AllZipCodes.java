@@ -21,7 +21,7 @@ public class AllZipCodes extends ZipOperations {
 
 	public void totalPopulation() {
 		if (memo.containsKey("total")) {
-			System.out.println(memo.get("total").getFirst());
+			System.out.println(memo.get("total").get(0));
 			return;
 		}
 		Integer total=0;

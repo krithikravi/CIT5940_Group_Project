@@ -22,30 +22,29 @@ import org.junit.Test;
 
 public class BasicTests {
 
-//	public static boolean triedToExit = false;
-//
-//	/*
-//	 * Student code should exit by returning from main(), not by calling System.exit
-//	 */
-//	@SuppressWarnings({ "removal", "deprecation" })
-//	@Before
-//	public void blockExit() {
-//		System.setSecurityManager(new SecurityManager() {
-//			public void checkExit(int status) {
-//				SecurityException se = new SecurityException("Student code called System.exit");
-//				// se.printStackTrace();
-//				throw se;
-//			}
-//
-//			public void checkPermission(java.security.Permission perm) {
-//			}
-//		});
-//	}
+	public static boolean triedToExit = false;
 
-//	@After
-//	public void resetExit() {
-//		System.setSecurityManager(null);
-//	}
+	/*
+	 * Student code should exit by returning from main(), not by calling System.exit
+	 */
+	@Before
+	public void blockExit() {
+		System.setSecurityManager(new SecurityManager() {
+			public void checkExit(int status) {
+				SecurityException se = new SecurityException("Student code called System.exit");
+				// se.printStackTrace();
+				throw se;
+			}
+
+			public void checkPermission(java.security.Permission perm) {
+			}
+		});
+	}
+
+	@After
+	public void resetExit() {
+		System.setSecurityManager(null);
+	}
 
 	/*
 	 * Note no safety is provided. This routine is expected to fail with any error
@@ -101,7 +100,7 @@ public class BasicTests {
 	public void testSpeed() throws Exception {
 		String results = runMain(new String[] { "--log=speed_test.log", "--covid=covid_data.json",
 				"--properties=properties.csv", "--population=population.csv" }, "2\n0\n");
-//		 System.out.println("raw output:\n" + results +"end of raw output\n");
+		// System.out.println("raw output:\n" + results +"end of raw output\n");
 		List<String> lResults = extractResults(results);
 		assertFalse("No assessable output detected", lResults == null);
 		assertTrue("Expected exactly one line of output", lResults.size() == 1);
@@ -141,10 +140,6 @@ public class BasicTests {
 		String result1 = runMain(
 				new String[] { "--covid=covid_data.json", "--population=population.csv", "--log=small_test1.log" },
 				"3\nfull\n2021-11-05\n0\n");
-		
-//		//not printing BEGIN and END OUTPUT for some reason that's what's messing up the test 
-//		System.out.println("raw output:\n" + result1 +"end of raw output\n");
-		
 		String result2 = runMain(new String[] { "--covid=covid_data.csv", "--properties=downsampled_properties.csv",
 				"--population=population.csv" }, "3\nfull\n2021-11-05\n0\n");
 
@@ -166,12 +161,12 @@ public class BasicTests {
 	@Test(timeout = 600000)
 	public void testActivities() throws Exception {
 		System.gc();
-//		System.out.println("Current memory used (MiB): " + (Runtime.getRuntime().totalMemory() >> 20));
+		System.out.println("Current memory used (MiB): " + (Runtime.getRuntime().totalMemory() >> 20));
 		String[] args = new String[] { "--log=activities.test.log.txt", "--covid=covid_data.csv",
 				"--properties=properties.csv", "--population=population.csv" };
 		String[] activities = new String[] { "1", "2", "3\nfull\n2021-05-01", "4\n19149", "5\n19149", "6\n19149" };
 		String results = runMain(args, Stream.of(activities).collect(Collectors.joining("\n")) + "\n0\n");
-		List<List<String>> mResults1 = extractResultsMulti(results);
+		var mResults1 = extractResultsMulti(results);
 		List<List<String>> mResults2 = new ArrayList<>();
 		for (String act : activities) {
 			mResults2.add(extractResults(runMain(args, act + "\n0\n")));

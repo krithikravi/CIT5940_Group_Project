@@ -92,7 +92,7 @@ public class Main {
 			for (int i = 0; i<args.length; i++) {
 				sb.append(" " + args[i]);
 			}
-			logger.log(sb.toString().strip());
+			logger.log(sb.toString().trim());
 			
 
 			

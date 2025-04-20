@@ -1,0 +1,114 @@
+1745032785348 --covid=covid_data.json --population=population.csv --log=small_test1.log
+1745032785542 --covid=covid_data.json
+1745032785547 --population=population.csv
+1745032785567 3
+1745032785567 full
+1745032785568 2021-11-05
+1745032785572 0
+1745032785573 --covid=covid_data.csv --properties=downsampled_properties.csv --population=population.csv
+1745032785882 --covid=covid_data.csv
+1745032785920 --properties=downsampled_properties.csv
+1745032785920 --population=population.csv
+1745036715757 --covid=covid_data.json --population=population.csv --log=small_test1.log
+1745036716008 --covid=covid_data.json
+1745036716012 --population=population.csv
+1745036716043 3
+1745036716043 full
+1745036716044 2021-11-05
+1745036716049 0
+1745036716050 --covid=covid_data.csv --properties=downsampled_properties.csv --population=population.csv
+1745036716350 --covid=covid_data.csv
+1745036716392 --properties=downsampled_properties.csv
+1745036716393 --population=population.csv
+1745037419484 --covid=covid_data.json --population=population.csv --log=small_test1.log
+1745037419622 --covid=covid_data.json
+1745037419624 --population=population.csv
+1745037419625 --covid=covid_data.csv --properties=downsampled_properties.csv --population=population.csv
+1745037419756 --covid=covid_data.csv
+1745037419766 --properties=downsampled_properties.csv
+1745037419766 --population=population.csv
+1745037692576 --covid=covid_data.json --population=population.csv --log=small_test1.log
+1745037692726 --covid=covid_data.json
+1745037692727 --population=population.csv
+1745037692729 --covid=covid_data.csv --properties=downsampled_properties.csv --population=population.csv
+1745037693018 --covid=covid_data.csv
+1745037693030 --properties=downsampled_properties.csv
+1745037693030 --population=population.csv
+1745037993615 --covid=covid_data.json --population=population.csv --log=small_test1.log
+1745037993748 --covid=covid_data.json
+1745037993749 --population=population.csv
+1745037993751 --covid=covid_data.csv --properties=downsampled_properties.csv --population=population.csv
+1745037994035 --covid=covid_data.csv
+1745037994046 --properties=downsampled_properties.csv
+1745037994047 --population=population.csv
+1745038200449 --covid=covid_data.json --population=population.csv --log=small_test1.log
+1745042102813 --covid=covid_data.json --population=population.csv --log=small_test1.log
+1745042103008 --covid=covid_data.json
+1745042103009 --population=population.csv
+1745043059122 --covid=covid_data.json --population=population.csv --log=small_test1.log
+1745043059308 --covid=covid_data.json
+1745043059309 --population=population.csv
+1745043059311 --covid=covid_data.csv --properties=downsampled_properties.csv --population=population.csv
+1745043059505 --covid=covid_data.csv
+1745043059516 --properties=downsampled_properties.csv
+1745043059517 --population=population.csv
+1745043164995 --covid=covid_data.json --population=population.csv --log=small_test1.log
+1745043165172 --covid=covid_data.json
+1745043165173 --population=population.csv
+1745043165174 --covid=covid_data.csv --properties=downsampled_properties.csv --population=population.csv
+1745043165476 --covid=covid_data.csv
+1745043165490 --properties=downsampled_properties.csv
+1745043165490 --population=population.csv
+1745043390998 --covid=covid_data.json --population=population.csv --log=small_test1.log
+1745043391160 --covid=covid_data.json
+1745043391160 --population=population.csv
+1745043391161 --covid=covid_data.csv --properties=downsampled_properties.csv --population=population.csv
+1745043391298 --covid=covid_data.csv
+1745043391311 --properties=downsampled_properties.csv
+1745043391312 --population=population.csv
+1745043470074 --covid=covid_data.json --population=population.csv --log=small_test1.log
+1745043470300 --covid=covid_data.json
+1745043470300 --population=population.csv
+1745043621564 --covid=covid_data.json --population=population.csv --log=small_test1.log
+1745043621715 --covid=covid_data.json
+1745043621716 --population=population.csv
+1745043621720 --covid=covid_data.csv --properties=downsampled_properties.csv --population=population.csv
+1745043621890 --covid=covid_data.csv
+1745043621902 --properties=downsampled_properties.csv
+1745043621902 --population=population.csv
+1745043723354 --covid=covid_data.json --population=population.csv --log=small_test1.log
+1745043723496 --covid=covid_data.json
+1745043723497 --population=population.csv
+1745043723499 --covid=covid_data.csv --properties=downsampled_properties.csv --population=population.csv
+1745043723637 --covid=covid_data.csv
+1745043723647 --properties=downsampled_properties.csv
+1745043723648 --population=population.csv
+1745043742999 --covid=covid_data.json --population=population.csv --log=small_test1.log
+1745043743153 --covid=covid_data.json
+1745043743154 --population=population.csv
+1745043743155 --covid=covid_data.csv --properties=downsampled_properties.csv --population=population.csv
+1745043743272 --covid=covid_data.csv
+1745043743280 --properties=downsampled_properties.csv
+1745043743280 --population=population.csv
+1745043909660 --covid=covid_data.json --population=population.csv --log=small_test1.log
+1745043909838 --covid=covid_data.json
+1745043909838 --population=population.csv
+1745043909839 --covid=covid_data.csv --properties=downsampled_properties.csv --population=population.csv
+1745043910019 --covid=covid_data.csv
+1745043910029 --properties=downsampled_properties.csv
+1745043910030 --population=population.csv
+1745113675937 --covid=covid_data.json --population=population.csv --log=small_test1.log
+1745113676076 --covid=covid_data.json
+1745113676077 --population=population.csv
+1745113676077 0
+1745113676078 --covid=covid_data.csv --properties=downsampled_properties.csv --population=population.csv
+1745113676230 --covid=covid_data.csv
+1745113676247 --properties=downsampled_properties.csv
+1745113676247 --population=population.csv
+1745113734272 --covid=covid_data.json --population=population.csv --log=small_test1.log
+1745113734433 --covid=covid_data.json
+1745113734434 --population=population.csv
+1745113734436 --covid=covid_data.csv --properties=downsampled_properties.csv --population=population.csv
+1745113734547 --covid=covid_data.csv
+1745113734557 --properties=downsampled_properties.csv
+1745113734557 --population=population.csv
