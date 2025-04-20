@@ -67,6 +67,7 @@ public class BasicTests {
 		System.setOut(realout);
 		System.setIn(realin);
 
+//		System.out.println(test_output.toString()); //added
 		return test_output.toString();
 	}
 
@@ -98,9 +99,10 @@ public class BasicTests {
 	/* Application must be able to run basic operations in under 2 minutes */
 	@Test(timeout = 120000)
 	public void testSpeed() throws Exception {
+		// Added a properties2.csv file that is a smaller version of properties.csv
 		String results = runMain(new String[] { "--log=speed_test.log", "--covid=covid_data.json",
 				"--properties=properties.csv", "--population=population.csv" }, "2\n0\n");
-		// System.out.println("raw output:\n" + results +"end of raw output\n");
+		 System.out.println("raw output:\n" + results +"end of raw output\n"); // uncommented
 		List<String> lResults = extractResults(results);
 		assertFalse("No assessable output detected", lResults == null);
 		assertTrue("Expected exactly one line of output", lResults.size() == 1);
