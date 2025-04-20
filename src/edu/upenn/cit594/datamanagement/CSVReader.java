@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -125,7 +126,7 @@ public class CSVReader extends Reader {
 	
 	public String[] readRow() throws IOException {	
     	
-    	ArrayList<String> rows=new ArrayList<String>();
+    	LinkedList<String> rows=new LinkedList<String>();
     	StringBuilder row=new StringBuilder("");
     	isEscaped escape = isEscaped.NOT_ESCAPED;
     	prevQuote quote = prevQuote.NOT_QUOTE;

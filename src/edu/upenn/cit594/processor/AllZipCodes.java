@@ -15,39 +15,48 @@ public class AllZipCodes extends ZipOperations {
 	
 	
 	
-	public AllZipCodes(HashMap<Integer, Area> zipCodes, Logger logger) {
-		super(zipCodes, logger);
+	public AllZipCodes(HashMap<Integer, Area> zipCodes, Logger logger, Input inputHelper) {
+		super(zipCodes, logger,inputHelper);
 	}
 
 	public void totalPopulation() {
+		System.out.println();
+		System.out.println("BEGIN OUTPUT");
 		if (memo.containsKey("total")) {
 			System.out.println(memo.get("total").get(0));
+			System.out.println("END OUTPUT");
+			System.out.flush();
 			return;
+			
 		}
+		
 		Integer total=0;
 		for (Area zip:zipCodes.values()) {
 			total+=zip.getPopulation();
 		}
 		System.out.println(total);
 		memo.put("total", new ArrayList<>(Arrays.asList(String.valueOf(total))));
+		System.out.println("END OUTPUT");
+		System.out.flush();
 	}
 	
 	public void totalVaccinations() {
 		Pattern pattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}", Pattern.CASE_INSENSITIVE);
-		String type = Input.getValidStringInput("Enter the type of vaccination to look up: full or partial.");
+		String type = inputHelper.getValidStringInput("Enter the type of vaccination to look up: full or partial.");
 		logger.log(type);
 		while (!(type.compareToIgnoreCase("partial")==0 || type.compareToIgnoreCase("full")==0)) {
-			type = Input.getValidStringInput("Enter the type of vaccination to look up: full or partial.");
+			type = inputHelper.getValidStringInput("Enter the type of vaccination to look up: full or partial.");
 			logger.log(type);
 		}
-		String dateString = Input.getValidStringInput("Enter the date to look up: must be in the format YYYY-MM-DD.");
+		String dateString = inputHelper.getValidStringInput("Enter the date to look up: must be in the format YYYY-MM-DD.");
 		logger.log(dateString);
 		Matcher matcher = pattern.matcher(dateString);
 		while (!matcher.find()) {
-			dateString = Input.getValidStringInput("Enter the date to look up: must be in the format YYYY-MM-DD.");
+			dateString = inputHelper.getValidStringInput("Enter the date to look up: must be in the format YYYY-MM-DD.");
 			logger.log(dateString);
 			matcher = pattern.matcher(dateString);
 		}
+		System.out.println();
 		System.out.println("BEGIN OUTPUT");
 		String date = (String) matcher.group();
 		type=type.toLowerCase();
@@ -56,6 +65,7 @@ public class AllZipCodes extends ZipOperations {
 				System.out.println(s);
 			}
 			System.out.println("END OUTPUT");
+			System.out.flush();
 			return;
 		}
 		for (Area zip:zipCodes.values()) {
@@ -68,8 +78,9 @@ public class AllZipCodes extends ZipOperations {
 				}
 				String format = String.format("%d %.4f", zip.getZipcode(),(double)zip.getPartialVaccinations().getOrDefault(date, 0)/(double)zip.getPopulation());
 				System.out.println(format);
-				ArrayList currMemo = memo.getOrDefault(date+type,new ArrayList<String>());
+				ArrayList<String> currMemo = memo.getOrDefault(date+type,new ArrayList<String>());
 				currMemo.add(format);
+				memo.put(date+type, currMemo);
 			}
 			else {
 				if (zip.getFullVaccinations().getOrDefault(date, 0)==0) {
@@ -77,11 +88,13 @@ public class AllZipCodes extends ZipOperations {
 				}
 				String format = String.format("%d %.4f", zip.getZipcode(),(double)zip.getFullVaccinations().getOrDefault(date, 0)/(double)zip.getPopulation());
 				System.out.println(format);
-				ArrayList currMemo = memo.getOrDefault(date+type,new ArrayList<String>());
+				ArrayList<String> currMemo = memo.getOrDefault(date+type,new ArrayList<String>());
 				currMemo.add(format);
+				memo.put(date+type, currMemo);
 			}
 		}
 		System.out.println("END OUTPUT");
+		System.out.flush();
 	}
 	
 	

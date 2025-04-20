@@ -22,19 +22,21 @@ public class UserInterface {
 	
 	Logger logger;
 	Set argsTraversed;
+	Input inputHelper;
 	
 	boolean printRegularMenu = true;
 	
-	public UserInterface(HashMap<Integer, Area> inputHashMap, Logger logger, Set argsTraversed) {
+	public UserInterface(HashMap<Integer, Area> inputHashMap, Logger logger, Set argsTraversed, Input inputHelper) {
 		this.hashMap = inputHashMap;
 		this.logger = logger;
 		this.argsTraversed = argsTraversed;
-		singleZipCode = new SingleZipCode(this.hashMap, this.logger);
-		allZipCodes = new AllZipCodes(this.hashMap, this.logger);
+		this.inputHelper=inputHelper;
+		singleZipCode = new SingleZipCode(this.hashMap, this.logger, this.inputHelper);
+		allZipCodes = new AllZipCodes(this.hashMap, this.logger,this.inputHelper);
+		
 	}
 	
 	int input = Integer.MAX_VALUE;
-	Scanner scanner = new Scanner(System.in);
 	String[] fileName = new String[2];
 	
 	public void runProgram() {
@@ -51,11 +53,12 @@ public class UserInterface {
 			System.out.flush();
 			//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			//need to use input class and method, scanner here violated N-tier architecture
-			input = Input.getValidIntInput();
+			input = inputHelper.getValidIntInput();
 			this.logger.log(Integer.toString(input));
 			switch(input) {
-			case 0: 
-				return;
+			case 0:
+				inputHelper.getScanner().close();
+				break;
 			case 1:
 				this.menuContentFromInputs(argsTraversed);
 				this.printRegularMenu = false;
@@ -63,12 +66,12 @@ public class UserInterface {
 			case 2:
 
 				
-				System.out.println("BEGIN OUTPUT");
+				
 				//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				//can just instantiate one allzipcodes and singlezipcode object at the start and call, no need to create one for each call
 //				allZipCodes = new AllZipCodes(this.hashMap);
 				allZipCodes.totalPopulation();
-				System.out.println("END OUTPUT");
+				
 				break;
 			case 3:
 
@@ -99,6 +102,7 @@ public class UserInterface {
 
 			}
 		}
+		return;
 	}
 
 	public void menuContent() {
@@ -115,6 +119,8 @@ public class UserInterface {
 	}
 	
 	public void menuContentFromInputs(Set argsTraversed) {
+		System.out.println();
+		System.out.println("BEGIN OUTPUT");
 		if (argsTraversed.contains("--population")) {
 			System.out.println("0. Exit the program.");
 			System.out.println("1. Show the available actions.");
@@ -136,6 +142,7 @@ public class UserInterface {
 			System.out.println("0. Exit the program.");
 			System.out.println("1. Show the available actions.");
 		}
+		System.out.println("END OUTPUT");
 
 	}
 

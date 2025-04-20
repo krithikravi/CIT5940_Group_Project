@@ -123,3 +123,201 @@
 1745113734236 --population=population.csv
 1745113734257 2
 1745113734258 0
+1745185078205 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745185078374 --covid=covid_data.json
+1745185086312 --properties=properties.csv
+1745185086327 --population=population.csv
+1745185086450 2
+1745185086451 0
+1745185249892 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745185250009 --covid=covid_data.json
+1745185258311 --properties=properties.csv
+1745185258313 --population=population.csv
+1745185258329 2
+1745185258330 0
+1745185555529 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745185555646 --covid=covid_data.json
+1745185565042 --properties=properties.csv
+1745185565044 --population=population.csv
+1745185565071 2
+1745185565071 0
+1745185713658 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745185713785 --covid=covid_data.json
+1745185722059 --properties=properties.csv
+1745185722061 --population=population.csv
+1745185722077 2
+1745185722078 0
+1745185891048 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745185891170 --covid=covid_data.json
+1745185899609 --properties=properties.csv
+1745185899612 --population=population.csv
+1745185899659 2
+1745185899660 0
+1745186272277 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745186305726 --covid=covid_data.json
+1745186316578 --properties=properties.csv
+1745186316580 --population=population.csv
+1745186336862 2
+1745186988842 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745186988977 --covid=covid_data.json
+1745186997458 --properties=properties.csv
+1745186997459 --population=population.csv
+1745186997522 2
+1745186997523 0
+1745187059653 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745187059842 --covid=covid_data.json
+1745187070342 --properties=properties.csv
+1745187070342 --population=population.csv
+1745187070378 2
+1745187070378 0
+1745187167438 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745187167592 --covid=covid_data.json
+1745187176491 --properties=properties.csv
+1745187176493 --population=population.csv
+1745187176526 2
+1745187176527 0
+1745187448747 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745187448869 --covid=covid_data.json
+1745187457788 --properties=properties.csv
+1745187457790 --population=population.csv
+1745187457841 2
+1745187457841 0
+1745187542650 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745187550005 --covid=covid_data.json
+1745187559958 --properties=properties.csv
+1745187559960 --population=population.csv
+1745187567218 2
+1745187577369 0
+1745187649945 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745187657155 --covid=covid_data.json
+1745187669823 --properties=properties.csv
+1745187669826 --population=population.csv
+1745187669913 2
+1745187669915 0
+1745188420622 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745188420745 --covid=covid_data.json
+1745188429091 --properties=properties.csv
+1745188429093 --population=population.csv
+1745188429173 2
+1745188429173 0
+1745188601750 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745188605045 --covid=covid_data.json
+1745188613513 --properties=properties.csv
+1745188613516 --population=population.csv
+1745188616835 2
+1745188616837 0
+1745188923505 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745188923624 --covid=covid_data.json
+1745188933053 --properties=properties.csv
+1745188933055 --population=population.csv
+1745188933120 2
+1745188933121 0
+1745188962359 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745188964713 --covid=covid_data.json
+1745188976285 --properties=properties.csv
+1745188976287 --population=population.csv
+1745188979288 2
+1745188979291 0
+1745189096825 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745189098395 --covid=covid_data.json
+1745189107511 --properties=properties.csv
+1745189107512 --population=population.csv
+1745189112525 2
+1745189115819 0
+1745189394170 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745189394302 --covid=covid_data.json
+1745189402823 --properties=properties.csv
+1745189402825 --population=population.csv
+1745189402882 2
+1745189402883 0
+1745189427122 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745189427299 --covid=covid_data.json
+1745189438570 --properties=properties.csv
+1745189438573 --population=population.csv
+1745189438624 2
+1745189438624 0
+1745189519171 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745189519406 --covid=covid_data.json
+1745189531125 --properties=properties.csv
+1745189531126 --population=population.csv
+1745189531152 2
+1745189531152 0
+1745190172789 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745190172901 --covid=covid_data.json
+1745190181252 --properties=properties.csv
+1745190181254 --population=population.csv
+1745190181368 2
+1745190181368 0
+1745190260330 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745190260452 --covid=covid_data.json
+1745190268833 --properties=properties.csv
+1745190268834 --population=population.csv
+1745190268851 2
+1745190268851 0
+1745190346876 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745190347032 --covid=covid_data.json
+1745190356050 --properties=properties.csv
+1745190356052 --population=population.csv
+1745190356097 2
+1745190356097 0
+1745190445063 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745190448552 --covid=covid_data.json
+1745190457682 --properties=properties.csv
+1745190457686 --population=population.csv
+1745190463167 2
+1745190471836 0
+1745190824506 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745190824626 --covid=covid_data.json
+1745190833544 --properties=properties.csv
+1745190833546 --population=population.csv
+1745190833562 2
+1745190833564 0
+1745191322102 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745191324887 --covid=covid_data.json
+1745191333420 --properties=properties.csv
+1745191333423 --population=population.csv
+1745191344558 2
+1745191352127 0
+1745191418946 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745191419079 --covid=covid_data.json
+1745191427381 --properties=properties.csv
+1745191427382 --population=population.csv
+1745191427433 2
+1745191427434 0
+1745191448600 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745191869029 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745191869180 --covid=covid_data.json
+1745191878076 --properties=properties.csv
+1745191878078 --population=population.csv
+1745191878138 2
+1745191878139 0
+1745192086962 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745192087105 --covid=covid_data.json
+1745192095769 --properties=properties.csv
+1745192095771 --population=population.csv
+1745192095787 2
+1745192095788 0
+1745192206214 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745192206326 --covid=covid_data.json
+1745192214537 --properties=properties.csv
+1745192214538 --population=population.csv
+1745192214595 2
+1745192214595 0
+1745192331907 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745192356977 --covid=covid_data.json
+1745192365137 --properties=properties.csv
+1745192365140 --population=population.csv
+1745192378215 2
+1745192378215 0
+1745192751292 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745192751431 --covid=covid_data.json
+1745192760847 --properties=properties.csv
+1745192760848 --population=population.csv
+1745192760897 2
+1745192760900 0
+1745192971124 --log=speed_test.log --covid=covid_data.json --properties=properties.csv --population=population.csv
+1745192971263 --covid=covid_data.json
+1745192980967 --properties=properties.csv
+1745192980969 --population=population.csv
+1745192980987 2
+1745192980987 0

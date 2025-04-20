@@ -54,7 +54,7 @@ public class JSONReader extends Reader {
 					partialVaccinations = Integer.parseInt(((String) partObject));
 				}
 				Object fullObject = line.getOrDefault("fully_vaccinated", 0);
-				System.out.println(fullObject.getClass());
+//				System.out.println(fullObject.getClass());
 				Integer fullVaccinations=0;
 				if (fullObject instanceof Integer) {
 					fullVaccinations = (Integer) fullObject ;

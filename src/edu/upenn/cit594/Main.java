@@ -18,6 +18,7 @@ import edu.upenn.cit594.util.*;
 
 public class Main {
 
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 
 		Set<String> argsTraversed = new HashSet<String>();
@@ -100,7 +101,7 @@ public class Main {
 			
 
 
-			HashMap ret = new HashMap<Integer, Area>();
+			HashMap<Integer, Area> ret = new HashMap<Integer, Area>();
 
 			
 			
@@ -120,21 +121,24 @@ public class Main {
 						throw new IllegalArgumentException("Invalid file extension");
 			    		
 					}
-					ret = (HashMap) reader.read().clone();
+					ret = (HashMap<Integer, Area>) reader.read().clone();
 					logger.log(args[i]);
 
 				}
 			}
-			
-			UserInterface ui = new UserInterface(ret, logger, argsTraversed);
+			Input inputHelper = new Input();
+			UserInterface ui = new UserInterface(ret, logger, argsTraversed,inputHelper);
 			ui.runProgram();
 			
 		} catch (IllegalArgumentException e) {
 			System.err.println("Error: " + e.getMessage());
+			System.out.flush();
 		} catch (IOException e) {
 			System.err.println("File error: " + e.getMessage());
+			System.out.flush();
 		} catch (Exception e) {
 			System.err.println("Unexpected error: " + e.getMessage());
+			System.out.flush();
 		}
 
 	}

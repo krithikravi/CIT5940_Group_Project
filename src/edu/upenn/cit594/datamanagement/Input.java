@@ -4,14 +4,18 @@ import java.util.Scanner;
 
 //Code from 5910 Starter Code
 public class Input {
-	private static Scanner scanner = new Scanner(System.in);          // Scanner for user input
+	private Scanner scanner;          // Scanner for user input
+
+	public Input() {
+		scanner = new Scanner(System.in);
+	}
 
 	/**
      * Gets valid integer input from the user. Re-prompts the user if the input is not a valid integer.
      *
      * @return A valid integer input
      */
-	public static int getValidIntInput() {
+	public int getValidIntInput() {
         while (true) { // Infinite loop to keep asking for input until it's valid
             try {
                 return Integer.parseInt(scanner.nextLine().trim()); // Try to parse the input as an integer
@@ -21,13 +25,18 @@ public class Input {
         }
     }
 
-    /**
+    public Scanner getScanner() {
+		return scanner;
+	}
+
+
+	/**
      * Gets valid string input from the user. Re-prompts if the input is empty.
      *
      * @param prompt The message to display when requesting input
      * @return A valid non-empty string
      */
-    public static String getValidStringInput(String prompt) {
+    public String getValidStringInput(String prompt) {
         System.out.print(prompt); // Display the prompt message
         String input = scanner.nextLine().trim(); // Get user input and trim any extra spaces
         while (input.isEmpty()) { // Loop if the input is empty

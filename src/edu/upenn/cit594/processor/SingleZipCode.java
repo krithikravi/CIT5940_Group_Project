@@ -14,8 +14,8 @@ public class SingleZipCode extends ZipOperations{
 	protected HashMap<Integer,SingleStrategy> operationStrategies;
 	
 
-	public SingleZipCode(HashMap<Integer, Area> zipCodes, Logger logger) {
-		super(zipCodes, logger);
+	public SingleZipCode(HashMap<Integer, Area> zipCodes, Logger logger,Input inputHelper) {
+		super(zipCodes, logger,inputHelper);
 		operationStrategies=new HashMap<Integer,SingleStrategy>();
 		operationStrategies.put(4,new AverageMarketValueStrategy());
 		operationStrategies.put(5,new AverageTotalLivableAreaStrategy());
@@ -26,19 +26,21 @@ public class SingleZipCode extends ZipOperations{
 	
 	public void runOperation(Integer choice) {
 		Pattern pattern = Pattern.compile("^\\d{5}", Pattern.CASE_INSENSITIVE);
-		String zipString = Input.getValidStringInput("Enter the zip code to look up: must be in the format XXXXX.");
+		String zipString = inputHelper.getValidStringInput("Enter the zip code to look up: must be in the format XXXXX.");
 		logger.log(zipString);
 		Matcher matcher = pattern.matcher(zipString);
 		while (!matcher.find()) {
-			zipString = Input.getValidStringInput("Enter the zip code to look up: must be in the format XXXXX.");
+			zipString = inputHelper.getValidStringInput("Enter the zip code to look up: must be in the format XXXXX.");
 			logger.log(zipString);
 			matcher = pattern.matcher(zipString);
 		}
+		System.out.println();
 		System.out.println("BEGIN OUTPUT");
 		Integer zip = Integer.valueOf((String) matcher.group());
 		if (!zipCodes.containsKey(zip)) {
 			System.out.println(0);
 			System.out.println("END OUTPUT");
+			System.out.flush();
 			return;
 		}
 		if (memo.containsKey(String.valueOf(zip)+String.valueOf(choice))) {
@@ -46,6 +48,7 @@ public class SingleZipCode extends ZipOperations{
 				System.out.println(out);
 			}
 			System.out.println("END OUTPUT");
+			System.out.flush();
 			return;
 		}
 		Area location = zipCodes.get(zip);
@@ -53,6 +56,7 @@ public class SingleZipCode extends ZipOperations{
 		System.out.println(ret);
 		memo.put(String.valueOf(zip)+String.valueOf(choice), new ArrayList<>(Arrays.asList(ret)));
 		System.out.println("END OUTPUT");
+		System.out.flush();
 	}
 	
 }
