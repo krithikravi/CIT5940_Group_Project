@@ -13,9 +13,9 @@ university code of academic integrity:
 Signed,
 Team: ###
 
-Author: YOUR NAME HERE
-Penn email: <YOUR-EMAIL-HERE@seas.upenn.edu>
-Date: YYYY-MM-DD
+Author: Krithik Ramanan Ravindran
+Penn email: <rkrithik@seas.upenn.edu>
+Date: 2025-04-20
 
 Author: YOUR NAME HERE
 Penn email: <YOUR-EMAIL-HERE@seas.upenn.edu>

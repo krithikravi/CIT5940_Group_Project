@@ -23,12 +23,13 @@ public class JSONReader extends Reader {
 	public JSONReader(String filename) {
 		super(filename);
 	}
-	public JSONReader(String filename, HashMap curr) {
+	public JSONReader(String filename, HashMap<?, ?> curr) {
 		super(filename,curr);		
 	}
 
+	@SuppressWarnings({ "unchecked"})
 	@Override
-	public HashMap read() throws IOException {
+	public HashMap<Integer, Area> read() throws IOException {
 		Pattern pattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}", Pattern.CASE_INSENSITIVE);
 		
 		try (FileReader file = new FileReader(this.filename)) {
@@ -54,35 +55,17 @@ public class JSONReader extends Reader {
 					partialVaccinations = Integer.parseInt(((String) partObject));
 				}
 				Object fullObject = line.getOrDefault("fully_vaccinated", 0);
-//				System.out.println(fullObject.getClass());
 				Integer fullVaccinations=0;
 				if (fullObject instanceof Integer) {
 					fullVaccinations = (Integer) fullObject ;
 				} else if (fullObject  instanceof Long) {
 					fullVaccinations =((Long) fullObject ).intValue();
-//					System.out.println("1");
 				}
 				else if (fullObject  instanceof String) {
 					fullVaccinations = Integer.parseInt(((String) fullObject ));
 				}
-//				Integer partialVaccinations=((Integer) line.getOrDefault("partially_vaccinated", 0));
-//				if (line.get("partially_vaccinated")==null) {
-//					partialVaccinations =0;
-//				}
-//				else {
-//					partialVaccinations = Integer.valueOf((String) line.getOrDefault("partially_vaccinated", 0));
-//				}
-//				Integer fullVaccinations=((Integer) line.getOrDefault("fully_vaccinated", 0));
-//				if (line.get("fully_vaccinated")==null) {
-//					fullVaccinations =0;
-//				}
-//				else {
-//					fullVaccinations = Integer.valueOf((String) line.getOrDefault("fully_vaccinated", 0));
-//				}
-//				Integer fullVaccinations = Integer.valueOf((String) line.getOrDefault("fully_vaccinated", 0));
 				ret.putIfAbsent(zip, new Area(zip));
 				ret.get(zip).addPartialVaccination(date, partialVaccinations);
-//				System.out.println(fullVaccinations);
 				ret.get(zip).addFullVaccination(date, fullVaccinations);
 			}
 		}

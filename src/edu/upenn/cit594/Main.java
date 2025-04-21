@@ -24,13 +24,6 @@ public class Main {
 		Set<String> argsTraversed = new HashSet<String>();
 		Logger logger = Logger.getInstance();
 		try {
-
-//			if (args.length == 0 || args.length>4) {
-//				throw new IllegalArgumentException("Required: tweets_file states_file log_file");
-//			}
-//			if (args.length != 4) {
-//				throw new IllegalArgumentException("Requires arguments for --population, --covid, --properties, and --log");
-//			}
 			
 			// Maybe try this to have the program take more variable number of arguments
 			if (args.length < 0 || args.length > 4) {
@@ -72,10 +65,6 @@ public class Main {
 			    		throw new IllegalArgumentException("More than one argument for log file");
 			    		
 			    	}
-//			    	 loggerAccessor = new LoggerAccessor(args[i]);
-			    	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			    	//wrong file name, need to parse out the --log
-//			    	 logger.loggerFileLocation(args[i]);
 			    	
 			    }
 			}
@@ -94,40 +83,31 @@ public class Main {
 				sb.append(" " + args[i]);
 			}
 			logger.log(sb.toString().trim());
-			
 
-			
-			
-			
+			HashMap<Integer, Area> data = new HashMap<Integer, Area>();
 
-
-			HashMap<Integer, Area> ret = new HashMap<Integer, Area>();
-
-			
-			
-			
 			for (int i = 0; i<args.length; i++) {
 				if (!args[i].startsWith("--log")) {
 					String filename=args[i].split("=")[1];
 					Reader reader;
 					if (filename.toLowerCase().endsWith("json")) {
-						reader = new JSONReader(filename, ret);
+						reader = new JSONReader(filename, data);
 						
 					}
 					else if (filename.toLowerCase().endsWith("csv")){
-						reader = new CSVReader(filename, ret);
+						reader = new CSVReader(filename, data);
 					}
 					else {
 						throw new IllegalArgumentException("Invalid file extension");
 			    		
 					}
-					ret = (HashMap<Integer, Area>) reader.read().clone();
-					logger.log(args[i]);
+					data = (HashMap<Integer, Area>) reader.read().clone();
+					logger.log(filename);
 
 				}
 			}
 			Input inputHelper = new Input();
-			UserInterface ui = new UserInterface(ret, logger, argsTraversed,inputHelper);
+			UserInterface ui = new UserInterface(data, logger, argsTraversed,inputHelper);
 			ui.runProgram();
 			
 		} catch (IllegalArgumentException e) {

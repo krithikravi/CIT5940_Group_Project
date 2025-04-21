@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 import edu.upenn.cit594.datamanagement.Input;
 import edu.upenn.cit594.logging.Logger;
 import edu.upenn.cit594.util.*;
-//import jdk.jfr.internal.Logger;
+
 
 public class AllZipCodes extends ZipOperations {
 	
@@ -92,6 +92,9 @@ public class AllZipCodes extends ZipOperations {
 				currMemo.add(format);
 				memo.put(date+type, currMemo);
 			}
+		}
+		if (!memo.containsKey(date+type)) {
+			System.out.println("0");
 		}
 		System.out.println("END OUTPUT");
 		System.out.flush();

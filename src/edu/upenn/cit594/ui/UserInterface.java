@@ -21,12 +21,12 @@ public class UserInterface {
 	AllZipCodes allZipCodes;
 	
 	Logger logger;
-	Set argsTraversed;
+	Set<?> argsTraversed;
 	Input inputHelper;
 	
 	boolean printRegularMenu = true;
 	
-	public UserInterface(HashMap<Integer, Area> inputHashMap, Logger logger, Set argsTraversed, Input inputHelper) {
+	public UserInterface(HashMap<Integer, Area> inputHashMap, Logger logger, Set<?> argsTraversed, Input inputHelper) {
 		this.hashMap = inputHashMap;
 		this.logger = logger;
 		this.argsTraversed = argsTraversed;
@@ -41,18 +41,13 @@ public class UserInterface {
 	
 	public void runProgram() {
 		while(input!=0) {
-			//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			//where/how is the output being logged?
 			if (printRegularMenu) {
 				this.menuContent();
 			}
 			printRegularMenu = true;
-//			this.menuContent();
 			System.out.println();
 			System.out.print("> ");
 			System.out.flush();
-			//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			//need to use input class and method, scanner here violated N-tier architecture
 			input = inputHelper.getValidIntInput();
 			this.logger.log(Integer.toString(input));
 			switch(input) {
@@ -64,12 +59,6 @@ public class UserInterface {
 				this.printRegularMenu = false;
 				break;
 			case 2:
-
-				
-				
-				//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-				//can just instantiate one allzipcodes and singlezipcode object at the start and call, no need to create one for each call
-//				allZipCodes = new AllZipCodes(this.hashMap);
 				allZipCodes.totalPopulation();
 				
 				break;
@@ -93,12 +82,9 @@ public class UserInterface {
 
 				this.singleZipCode.runOperation(7);
 				break;
-//				break;
 			default:
 				System.err.println("Invalid input. Please try again");
 				continue;
-				
-
 
 			}
 		}
@@ -113,35 +99,29 @@ public class UserInterface {
 		System.out.println("4. Show the average market value for properties in a specified ZIP Code.");
 		System.out.println("5. Show the average total livable area for properties in a specified ZIP Code.");
 		System.out.println("6. Show the total market value of properties, per capita for a specified ZIP Code.");
-		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		//need to change this to showing the total market value per capita divided by the number of full vaccinations for a specific zip code 
 		System.out.println("7. Show the total market value per capita divided by the number of full vaccinations for a specific zip code.");
 	}
 	
-	public void menuContentFromInputs(Set argsTraversed) {
+	public void menuContentFromInputs(Set<?> argsTraversed) {
 		System.out.println();
 		System.out.println("BEGIN OUTPUT");
-		if (argsTraversed.contains("--population")) {
-			System.out.println("0. Exit the program.");
-			System.out.println("1. Show the available actions.");
-			System.out.println("2. Show the total population for all ZIP Codes.");
+		System.out.println("0");
+		System.out.println("1");
+		if (argsTraversed.contains("--population")) {			
+			System.out.println("2");
 		} 
 		if(argsTraversed.contains("--population") && argsTraversed.contains("--covid")) {
 
-			System.out.println("3. Show the total vaccinations per capita for each ZIP Code for the specified date.");
+			System.out.println("3");
 		} 
-		if(argsTraversed.contains("--population") && argsTraversed.contains("--covid") && argsTraversed.contains("--properties")) {
-
-			System.out.println("4. Show the average market value for properties in a specified ZIP Code.");
-			System.out.println("5. Show the average total livable area for properties in a specified ZIP Code.");
-			System.out.println("6. Show the total market value of properties, per capita for a specified ZIP Code.");
-			System.out.println("7. Show the total market value per capita divided by the number of full vaccinations for a specific zip code.");
-		} 
-		
-		if (!(argsTraversed.contains("--population") || argsTraversed.contains("--covid") || argsTraversed.contains("--properties"))) {
-			System.out.println("0. Exit the program.");
-			System.out.println("1. Show the available actions.");
+		if (argsTraversed.contains("--properties")){
+			System.out.println("4");
+			System.out.println("5");
+			System.out.println("6");
 		}
+		if(argsTraversed.contains("--population") && argsTraversed.contains("--covid") && argsTraversed.contains("--properties")) {
+			System.out.println("7");
+		} 
 		System.out.println("END OUTPUT");
 
 	}

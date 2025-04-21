@@ -26,13 +26,13 @@ public class CSVReader extends Reader {
 		this.charReader = new FileReader(this.filename);
 	}
 	
-	public CSVReader(String filename, HashMap curr) throws FileNotFoundException {
+	public CSVReader(String filename, HashMap<?, ?> curr) throws FileNotFoundException {
 		super(filename,curr);
 		charReader = new FileReader(this.filename);
 	}
 
 	@Override
-	public HashMap read() throws IOException {
+	public HashMap<Integer, Area> read() throws IOException {
 		List<String> columns = new ArrayList<String>();
 		int zipIndex = -1;
 		int dateIndex = 0;
@@ -46,7 +46,6 @@ public class CSVReader extends Reader {
 		fileType type = fileType.VAC;
 		while (true) {
 			String[] row = readRow();
-//			System.out.println(row[0]);
 			if (row==null) {
 				break;
 			}
@@ -99,13 +98,10 @@ public class CSVReader extends Reader {
 					continue;
 				}
 				Integer zip = Integer.valueOf(matcher2.group());
-//				System.out.println(zip+row[areaIndex]+row[marketIndex]);
 				Integer totalArea = (int) Float.parseFloat(row[areaIndex]);
 				Integer marketValue = (int) Float.parseFloat(row[marketIndex]);
 				ret.putIfAbsent(zip, new Area(zip));
-//				System.out.println(ret.get(zip).getProperties());
 				ret.get(zip).addProperty(new Property(marketValue,totalArea));
-//				System.out.println(ret.get(zip).getProperties());
 			}
 			if (type.equals(fileType.POP)) {
 				Matcher matcher2 = pattern2.matcher(row[zipIndex].toString());
@@ -210,7 +206,6 @@ public class CSVReader extends Reader {
     				break;
     			}
     		default:
-//    			if ("CR".equals(cr.toString()) || curr<0x20 || curr>0x7E || curr==0x22){
     			if ("CR".equals(cr.toString())) {
     				throw new IOException();
 				}

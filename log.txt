@@ -86,3 +86,67 @@
 1745192083223 --population=population.csv
 1745192083383 --covid=covid_data.csv
 1745192083406 --properties=downsampled_properties.csv
+1745194388039 --population=population.csv --covid=covid_data.csv --properties=downsampled_properties.csv --log=log.txt
+1745194388052 --population=population.csv
+1745194388159 --covid=covid_data.csv
+1745194388176 --properties=downsampled_properties.csv
+1745194392860 4
+1745194395077 kladsjs
+1745194398830 k32414
+1745194402535 12342
+1745194794023 --population=population.csv --covid=covid_data.csv --properties=downsampled_properties.csv --log=log.txt
+1745194794035 --population=population.csv
+1745194794150 --covid=covid_data.csv
+1745194794169 --properties=downsampled_properties.csv
+1745194797417 1
+1745195292655 --population=population.csv --covid=covid_data.csv --properties=downsampled_properties.csv --log=log.txt
+1745195292666 population.csv
+1745195292782 covid_data.csv
+1745195292799 downsampled_properties.csv
+1745195295396 1
+1745195299499 7
+1745195303558 19124
+1745195307089 0
+--population=population.csv --covid=covid_data.csv --properties=downsampled_properties.csv --log=log.txt
+population.csv
+covid_data.csv
+downsampled_properties.csv
+1
+7
+19124
+1745195875067 --population=population.csv --covid=covid_data.csv --properties=downsampled_properties.csv --log=log.txt
+1745195875081 population.csv
+1745195875198 covid_data.csv
+1745195875218 downsampled_properties.csv
+1745195877001 1
+1745195878431 7
+1745195879987 19124
+1745195882042 2
+1745195883015 2
+1745195884768 3
+1745195888213 partLS
+1745195889824 partial
+1745195894541 2021-03-12
+1745196023740 --population=population.csv --covid=covid_data.csv --properties=downsampled_properties.csv --log=log.txt
+1745196023751 population.csv
+1745196023878 covid_data.csv
+1745196023915 downsampled_properties.csv
+1745196026710 3
+1745196029311 partial
+1745196036039 2020-05-20
+1745196043142 4
+1745196045848 0923121
+1745196048661 19124
+1745196051558 4
+1745196052668 19124
+1745196055448 5
+1745196057266 19124
+1745196060224 6
+1745196061674 19124
+1745196065922 0
+1745197101718 --population=population.csv --covid=covid_data.csv --properties=downsampled_properties.csv --log=log.txt
+1745197101732 population.csv
+1745197101876 covid_data.csv
+1745197101904 downsampled_properties.csv
+1745197104522 1
+1745197106746 0

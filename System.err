@@ -1,0 +1,15 @@
+1745196571363 --population=population.csv --covid=covid_data.csv --properties=downsampled_properties.csv
+1745196571376 population.csv
+1745196571488 covid_data.csv
+1745196571511 downsampled_properties.csv
+1745196575722 1
+1745196579829 6
+1745196581795 19124
+1745196595735 --population=population.csv --covid=covid_data.csv --properties=downsampled_properties.csv
+1745196595750 population.csv
+1745196596070 covid_data.csv
+1745196596094 downsampled_properties.csv
+1745196605480 --population=population.csv --covid=covid_data.csv --properties=downsampled_properties.csv
+1745196605493 population.csv
+1745196605824 covid_data.csv
+1745196605844 downsampled_properties.csv
