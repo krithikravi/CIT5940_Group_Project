@@ -30,12 +30,5 @@ public abstract class Reader {
     
     public abstract HashMap read() throws IOException;
 
-//	public static Reader getReader(String filename,HashMap<Integer, Area> ret) throws FileNotFoundException {
-//		if (filename.toLowerCase().endsWith(".csv")){
-//			return new CSVReader(filename,ret);
-//		}
-//		else {
-//			return new JSONReader(filename,ret);
-//		}
-//	}
+
 }
